@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BROT2YOU — Accompagnement de stages MEEF M1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+:root {
+  --slate:#2D5A4F;--slate-mid:#3D7A6B;--slate-light:#EAF2F0;--slate-border:#C3DDD8;
+  --terra:#C25E2A;--terra-light:#FAF0EB;--terra-border:#EDCAB4;
+  --amber:#B8860B;--amber-light:#FBF6E7;
+  --blue:#2563A8;--blue-light:#EBF2FA;
+  --rose:#9B3A5C;--rose-light:#F9EDF2;
+  --bg:#F8F7F4;--white:#FFFFFF;--text:#1C1C1A;--text-soft:#5A5A56;--border:#E2E0DA;
+  --r:10px;--rl:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;}
+header{background:var(--slate);position:sticky;top:0;z-index:100;}
+.header-inner{max-width:1080px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;display:flex;align-items:center;gap:10px;}
+.logo-sub{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;background:rgba(255,255,255,0.15);border-radius:6px;padding:2px 8px;color:rgba(255,255,255,0.85);letter-spacing:0.4px;}
+nav{display:flex;gap:4px;flex-wrap:wrap;}
+nav button{background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:7px;padding:6px 14px;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.75);cursor:pointer;transition:all 0.15s;}
+nav button:hover{background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.35);}
+nav button.active{background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.4);}
+main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
+.view{display:none;}.view.active{display:block;}
+.hero{background:var(--slate);border-radius:var(--rl);padding:44px 40px;color:#fff;margin-bottom:28px;}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.5vw,40px);line-height:1.2;margin-bottom:12px;font-weight:400;}
+.hero p{font-size:15px;opacity:0.82;max-width:520px;line-height:1.65;}
+.hero-chips{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 13px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:28px;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 16px;text-align:center;}
+.stat-number{font-family:'DM Serif Display',serif;font-size:30px;color:var(--slate);line-height:1;margin-bottom:4px;}
+.stat-label{font-size:12px;color:var(--text-soft);font-weight:500;}
+.format-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px;margin-bottom:28px;}
+.section-title{font-size:16px;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:8px;color:var(--text);}
+.section-title i{color:var(--slate);font-size:18px;}
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:grid;grid-template-columns:62px 20px 1fr;gap:0 14px;padding-bottom:20px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-time{text-align:right;font-size:12px;font-weight:600;padding-top:2px;}
+.tl-axis{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+.tl-line{width:2px;flex:1;background:var(--border);margin-top:4px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-body h4{font-size:14px;font-weight:600;margin-bottom:2px;}
+.tl-body p{font-size:13px;color:var(--text-soft);line-height:1.5;}
+.c-slate{color:var(--slate);}.d-slate{background:var(--slate);}
+.c-terra{color:var(--terra);}.d-terra{background:var(--terra);}
+.c-amber{color:var(--amber);}.d-amber{background:var(--amber);}
+.c-blue{color:var(--blue);}.d-blue{background:var(--blue);}
+.c-rose{color:var(--rose);}.d-rose{background:var(--rose);}
+.duo-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.duo-card{background:var(--slate);border-radius:var(--r);padding:20px;color:#fff;}
+.duo-card.terra{background:var(--terra);}
+.duo-card.amber{background:var(--amber);}
+.duo-card h3{font-size:15px;font-weight:600;margin-bottom:6px;}
+.duo-card p{font-size:13px;opacity:0.82;line-height:1.5;}
+.duo-card i{font-size:22px;margin-bottom:10px;display:block;opacity:0.9;}
+
+/* PROFILS */
+.profils-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:28px;}
+.profil-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;}
+.profil-head{padding:16px 18px 14px;display:flex;align-items:center;gap:12px;}
+.profil-badge{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.profil-head h3{font-size:14px;font-weight:600;line-height:1.3;}
+.profil-head p{font-size:12px;color:var(--text-soft);margin-top:2px;}
+.profil-body{padding:0 18px 16px;border-top:1px solid var(--border);}
+.profil-row{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.profil-row:last-child{border-bottom:none;}
+.profil-key{font-weight:600;font-size:11px;color:var(--text-soft);min-width:80px;padding-top:1px;}
+
+/* CALENDRIER */
+.cal-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:24px;margin-bottom:28px;}
+.cal-title{font-size:16px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.cal-title i{color:var(--slate);font-size:18px;}
+.cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.cal-item{border-radius:10px;padding:14px;border:1px solid transparent;}
+.cal-item.phase-groupee{background:var(--terra-light);border-color:var(--terra-border);}
+.cal-item.phase-filee{background:var(--slate-light);border-color:var(--slate-border);}
+.cal-item.phase-inspe{background:var(--amber-light);border-color:#DFC97A;}
+.cal-item h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:4px;}
+.cal-item.phase-groupee h4{color:#8A3A12;}
+.cal-item.phase-filee h4{color:#1D4039;}
+.cal-item.phase-inspe h4{color:#6B5000;}
+.cal-item p{font-size:13px;line-height:1.5;}
+.cal-dates{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.cal-date{font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px;}
+.phase-groupee .cal-date{background:var(--terra);color:#fff;}
+.phase-filee .cal-date{background:var(--slate);color:#fff;}
+.phase-inspe .cal-date{background:var(--amber);color:#fff;}
+
+/* SESSIONS */
+.sessions-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;}
+.sessions-header h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;}
+.filter-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.filter-btn{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:5px 13px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;color:var(--text-soft);}
+.filter-btn:hover{border-color:var(--slate);color:var(--slate);}
+.filter-btn.active{background:var(--slate);border-color:var(--slate);color:#fff;}
+.sessions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;}
+.session-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:transform 0.15s,border-color 0.15s;}
+.session-card:hover{transform:translateY(-2px);border-color:var(--slate-border);}
+.card-top{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px;}
+.session-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--slate);line-height:1;min-width:34px;}
+.card-meta h3{font-size:14px;font-weight:600;line-height:1.35;margin-bottom:6px;}
+.axe-badge{display:inline-flex;align-items:center;gap:4px;border-radius:5px;padding:2px 9px;font-size:11px;font-weight:600;}
+.card-body{padding:14px 20px;}
+.moment-row{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.moment-row:last-child{border-bottom:none;}
+.moment-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
+.moment-label{font-weight:600;font-size:11px;color:var(--text-soft);min-width:58px;padding-top:4px;}
+.moment-desc{flex:1;line-height:1.4;color:var(--text);}
+
+/* AXES */
+.axes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.axe-card{border-radius:var(--rl);padding:22px;border:1px solid transparent;}
+.axe-card h3{font-size:16px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.axe-card h3 i{font-size:20px;}
+.axe-card>p{font-size:13px;line-height:1.55;opacity:0.78;}
+.axe-sessions-list{display:flex;flex-direction:column;gap:6px;margin-top:14px;}
+.axe-session-item{background:rgba(255,255,255,0.55);border-radius:8px;padding:9px 13px;font-size:13px;cursor:pointer;transition:background 0.15s;border:1px solid rgba(255,255,255,0.3);}
+.axe-session-item:hover{background:rgba(255,255,255,0.88);}
+.axe-session-item span{font-weight:600;margin-right:6px;}
+.axe-1{background:var(--terra-light);border-color:var(--terra-border);}
+.axe-1 h3{color:#8A3A12;}.axe-1 h3 i{color:var(--terra);}
+.badge-1{background:var(--terra-light);color:#8A3A12;}
+.axe-2{background:var(--slate-light);border-color:var(--slate-border);}
+.axe-2 h3{color:#1D4039;}.axe-2 h3 i{color:var(--slate);}
+.badge-2{background:var(--slate-light);color:#1D4039;}
+.axe-3{background:var(--amber-light);border-color:#DFC97A;}
+.axe-3 h3{color:#6B5000;}.axe-3 h3 i{color:var(--amber);}
+.badge-3{background:var(--amber-light);color:#6B5000;}
+.axe-4{background:var(--blue-light);border-color:#B5CDE8;}
+.axe-4 h3{color:#133C6E;}.axe-4 h3 i{color:var(--blue);}
+.badge-4{background:var(--blue-light);color:#133C6E;}
+.axe-5{background:var(--rose-light);border-color:#DDB5C8;}
+.axe-5 h3{color:#6B1F3C;}.axe-5 h3 i{color:var(--rose);}
+.badge-5{background:var(--rose-light);color:#6B1F3C;}
+.mi-0{background:var(--terra-light);color:var(--terra);}
+.mi-1{background:var(--slate-light);color:var(--slate);}
+.mi-2{background:var(--amber-light);color:var(--amber);}
+.mi-3{background:var(--blue-light);color:var(--blue);}
+.mi-4{background:var(--rose-light);color:var(--rose);}
+.mm-0{background:var(--terra-light);}.mm-1{background:var(--slate-light);}
+.mm-2{background:var(--amber-light);}.mm-3{background:var(--blue-light);}
+.mm-4{background:var(--rose-light);}
+
+/* CARNET */
+.carnet-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.carnet-nav button{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;color:var(--text-soft);}
+.carnet-nav button:hover{border-color:var(--slate);color:var(--slate);}
+.carnet-nav button.active{background:var(--slate);border-color:var(--slate);color:#fff;}
+.carnet-view{display:none;}.carnet-view.active{display:block;}
+
+/* Timeline carnet */
+.carn-timeline{display:flex;flex-direction:column;gap:0;max-width:700px;margin:0 auto;}
+.carn-item{display:grid;grid-template-columns:90px 1fr;gap:0 22px;padding-bottom:24px;position:relative;}
+.carn-item::before{content:'';position:absolute;left:90px;top:14px;bottom:0;width:2px;background:var(--border);margin-left:11px;}
+.carn-item:last-child::before{display:none;}
+.carn-left{text-align:right;padding-top:8px;}
+.carn-tag{display:inline-block;font-size:12px;font-weight:600;color:var(--slate);border-radius:7px;padding:3px 9px;background:var(--slate-light);border:1px solid var(--slate-border);}
+.carn-right{padding-left:26px;position:relative;}
+.carn-right::before{content:'';position:absolute;left:3px;top:12px;width:14px;height:14px;border-radius:50%;background:var(--slate);border:3px solid var(--white);box-shadow:0 0 0 2px var(--slate);}
+.carn-entry{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;}
+.carn-entry h4{font-size:14px;font-weight:600;margin-bottom:5px;}
+.carn-entry .consigne{font-size:13px;color:var(--text-soft);line-height:1.6;font-style:italic;margin-bottom:10px;}
+.carn-badge{display:inline-flex;align-items:center;gap:4px;border-radius:5px;padding:2px 9px;font-size:11px;font-weight:600;margin-top:4px;}
+
+/* Carnet exemple — entrées détaillées */
+.exemple-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
+.exemple-header h3{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;}
+.entree-nav{display:flex;gap:6px;flex-wrap:wrap;}
+.entree-btn{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;color:var(--text-soft);}
+.entree-btn:hover{border-color:var(--terra);color:var(--terra);}
+.entree-btn.active{background:var(--terra);border-color:var(--terra);color:#fff;}
+.entree-card{display:none;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;}
+.entree-card.active{display:block;}
+.entree-top{background:var(--terra);padding:20px 24px;color:#fff;}
+.entree-top .e-num{font-family:'DM Serif Display',serif;font-size:13px;opacity:0.8;margin-bottom:2px;}
+.entree-top h4{font-size:17px;font-weight:600;line-height:1.3;}
+.entree-top .e-moment{font-size:12px;opacity:0.75;margin-top:4px;}
+.entree-body{padding:20px 24px;}
+.entree-section{margin-bottom:18px;}
+.entree-section:last-child{margin-bottom:0;}
+.entree-section h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-soft);margin-bottom:8px;}
+.consigne-box{background:var(--terra-light);border:1px solid var(--terra-border);border-radius:8px;padding:12px 14px;font-size:13px;color:#6B2E10;line-height:1.6;font-style:italic;}
+.reponse-area{background:var(--bg);border:1px dashed var(--border);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--text-soft);min-height:60px;line-height:1.6;}
+.table-simple{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px;}
+.table-simple th{background:var(--slate-light);color:#1D4039;font-weight:600;padding:8px 10px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;}
+.table-simple td{padding:8px 10px;border-bottom:1px solid var(--border);}
+.table-simple tr:last-child td{border-bottom:none;}
+.alact-step{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);}
+.alact-step:last-child{border-bottom:none;}
+.alact-letter{width:32px;height:32px;border-radius:8px;background:var(--slate);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:'DM Serif Display',serif;}
+.alact-content h6{font-size:13px;font-weight:600;margin-bottom:3px;}
+.alact-content p{font-size:12px;color:var(--text-soft);line-height:1.5;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(20,20,18,0.5);z-index:200;align-items:center;justify-content:center;padding:24px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--white);border-radius:var(--rl);max-width:660px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--border);}
+.modal-header{padding:26px 26px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:16px;}
+.modal-num{font-family:'DM Serif Display',serif;font-size:38px;color:var(--slate);line-height:1;min-width:48px;}
+.modal-header-info{flex:1;}
+.modal-header-info h2{font-family:'DM Serif Display',serif;font-size:19px;font-weight:400;margin-bottom:8px;line-height:1.3;}
+.close-btn{background:var(--bg);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--text-soft);flex-shrink:0;transition:background 0.15s;}
+.close-btn:hover{background:var(--border);}
+.modal-body{padding:22px 26px;}
+.modal-section{margin-bottom:22px;}
+.modal-section h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.9px;color:var(--text-soft);margin-bottom:10px;}
+.modal-moment{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;border-radius:10px;margin-bottom:7px;}
+.modal-moment-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.modal-moment-content h5{font-size:13px;font-weight:600;margin-bottom:3px;display:flex;align-items:center;gap:8px;}
+.modal-moment-content p{font-size:13px;color:var(--text-soft);line-height:1.55;}
+.duration-tag{font-size:11px;font-weight:600;background:var(--slate-light);color:var(--slate);padding:2px 7px;border-radius:5px;}
+.livrable-box{display:inline-flex;align-items:center;gap:8px;background:var(--slate-light);color:var(--slate);border-radius:8px;padding:9px 16px;font-size:14px;font-weight:600;border:1px solid var(--slate-border);}
+
+@media(max-width:600px){
+  .header-inner{flex-direction:column;align-items:flex-start;gap:10px;}
+  nav button{font-size:12px;padding:5px 10px;}
+  .hero{padding:26px 20px;}
+  main{padding:18px 14px 60px;}
+  .sessions-grid,.profils-grid,.axes-grid{grid-template-columns:1fr;}
+  .duo-cards{grid-template-columns:1fr;}
+  .modal-header{padding:18px 18px 14px;}
+  .modal-body{padding:16px 18px;}
+  .entree-body{padding:14px 16px;}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <i class="ti ti-school" style="font-size:22px;opacity:0.9;" aria-hidden="true"></i>
+      BROT2YOU
+      <span class="logo-sub">MEEF M1 · S1 · Académie de Montpellier</span>
+    </div>
+    <nav>
+      <button class="active" onclick="showView('accueil',this)">Accueil</button>
+      <button onclick="showView('sessions',this)">11 séances</button>
+      <button onclick="showView('axes',this)">5 axes</button>
+      <button onclick="showView('carnet',this)">Carnet de stage</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== ACCUEIL ===== -->
+<div class="view active" id="view-accueil">
+  <div class="hero">
+    <h1>Accompagnement<br>de stages MEEF M1</h1>
+    <p>Un semestre pour apprendre à enseigner à partir de ce que vous vivez en classe — 2 semaines de stage groupé, puis stage filé lundi et jeudi tout le semestre.</p>
+    <div class="hero-chips">
+      <div class="chip"><i class="ti ti-user" aria-hidden="true"></i> M1 uniquement</div>
+      <div class="chip"><i class="ti ti-clock" aria-hidden="true"></i> 11 blocs de 4h</div>
+      <div class="chip"><i class="ti ti-calendar" aria-hidden="true"></i> Lundi + jeudi en établissement</div>
+      <div class="chip"><i class="ti ti-notebook" aria-hidden="true"></i> Carnet de stage progressif</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card"><div class="stat-number">45</div><div class="stat-label">heures de TD</div></div>
+    <div class="stat-card"><div class="stat-number">11</div><div class="stat-label">séances × 4h</div></div>
+    <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">axes thématiques</div></div>
+    <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">entrées carnet</div></div>
+  </div>
+
+  <!-- PROFILS -->
+  <div class="format-card" style="margin-bottom:28px;">
+    <div class="section-title"><i class="ti ti-id-badge" aria-hidden="true"></i> Profils des étudiants M1</div>
+    <div class="profils-grid" style="margin-bottom:0;">
+      <div class="profil-card">
+        <div class="profil-head">
+          <div class="profil-badge" style="background:var(--slate-light);color:var(--slate);"><i class="ti ti-star" aria-hidden="true"></i></div>
+          <div>
+            <h3>Élèves fonctionnaires</h3>
+            <p>Lauréats du concours bac+3 · M2E 1re année</p>
+          </div>
+        </div>
+        <div class="profil-body">
+          <div class="profil-row"><div class="profil-key">Statut</div><div>Agent public rémunéré — 1 400 € net/mois</div></div>
+          <div class="profil-row"><div class="profil-key">Stage</div><div>SOPA — observation et pratique accompagnée, tiers temps</div></div>
+          <div class="profil-row"><div class="profil-key">Présence</div><div>Lundi + jeudi · 6h/semaine en classes de leur tuteur</div></div>
+          <div class="profil-row"><div class="profil-key">Responsabilité</div><div>Pas en responsabilité — suivent les classes du tuteur</div></div>
+          <div class="profil-row"><div class="profil-key">Établissements</div><div>Étab. 1 au S1, étab. 2 au S2 (collège + lycée si possible)</div></div>
+        </div>
+      </div>
+      <div class="profil-card">
+        <div class="profil-head">
+          <div class="profil-badge" style="background:var(--terra-light);color:var(--terra);"><i class="ti ti-school" aria-hidden="true"></i></div>
+          <div>
+            <h3>Étudiants non lauréats</h3>
+            <p>Licence obtenue, concours non réussi · M2E 1re année</p>
+          </div>
+        </div>
+        <div class="profil-body">
+          <div class="profil-row"><div class="profil-key">Statut</div><div>Qualité d'étudiant — pas de gratification</div></div>
+          <div class="profil-row"><div class="profil-key">Stage</div><div>SOPA — même organisation qu'EF au S1</div></div>
+          <div class="profil-row"><div class="profil-key">Présence</div><div>Lundi + jeudi · 6h/semaine en classes du tuteur</div></div>
+          <div class="profil-row"><div class="profil-key">Responsabilité</div><div>Pas en responsabilité — suivent les classes du tuteur</div></div>
+          <div class="profil-row"><div class="profil-key">Spécificité</div><div>Stage écourté au S2 pour préparer le concours</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALENDRIER S1 -->
+  <div class="cal-card">
+    <div class="cal-title"><i class="ti ti-calendar-event" aria-hidden="true"></i> Calendrier du stage — Semestre 1</div>
+    <div class="cal-grid">
+      <div class="cal-item phase-groupee">
+        <h4>Stage groupé</h4>
+        <p>Semaine entière en établissement — toutes les heures d'enseignement du tuteur, en continu. Pas de formation INSPÉ pendant cette période.</p>
+        <div class="cal-dates">
+          <span class="cal-date">21 sept.</span>
+          <span class="cal-date">2 oct.</span>
+        </div>
+      </div>
+      <div class="cal-item phase-filee">
+        <h4>Stage filé</h4>
+        <p>Présence lundi + jeudi (mardi + mercredi pour EPS). 6h/semaine en classes du tuteur. Observation progressive, puis pratique accompagnée.</p>
+        <div class="cal-dates">
+          <span class="cal-date">À partir du 18 oct.</span>
+          <span class="cal-date">9 semaines</span>
+        </div>
+      </div>
+      <div class="cal-item phase-inspe">
+        <h4>Formation INSPÉ</h4>
+        <p>Les autres jours de la semaine — formation universitaire, TD d'accompagnement de stage, séminaires disciplinaires.</p>
+        <div class="cal-dates">
+          <span class="cal-date">Tout le semestre</span>
+        </div>
+      </div>
+      <div class="cal-item phase-filee" style="background:var(--blue-light);border-color:#B5CDE8;">
+        <h4 style="color:#133C6E;">Tuteurs</h4>
+        <p style="color:#1C1C1A;">Les tuteurs bénéficient eux-mêmes d'une formation académique (néo-tuteurs : 9 et 15 oct.). Convention signée avant chaque période.</p>
+        <div class="cal-dates">
+          <span class="cal-date" style="background:var(--blue);color:#fff;">9 oct.</span>
+          <span class="cal-date" style="background:var(--blue);color:#fff;">15 oct.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMAT 4H -->
+  <div class="format-card">
+    <div class="section-title"><i class="ti ti-clock-hour-4" aria-hidden="true"></i> Format type — bloc de 4h</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time c-terra">45 min</div>
+        <div class="tl-axis"><div class="tl-dot d-terra"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>Retour de terrain</h4><p>Débrief en petits groupes à partir de ce qu'ils ont vécu en stage — point de départ obligatoire, jamais sauté.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time c-slate">50 min</div>
+        <div class="tl-axis"><div class="tl-dot d-slate"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>Apport structurant</h4><p>Concept didactique ancré sur ce qui vient d'être dit. Jamais posé en abstrait avant le vécu.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time c-amber">75 min</div>
+        <div class="tl-axis"><div class="tl-dot d-amber"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>Atelier en binôme ou groupe</h4><p>Production concrète et collaborative. Un livrable par séance, réutilisable en stage.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time c-blue">30 min</div>
+        <div class="tl-axis"><div class="tl-dot d-blue"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>Capsule numérique</h4><p>Un outil testé en binôme — pas juste montré. Regard critique intégré dès le départ.</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time c-rose">30 min</div>
+        <div class="tl-axis"><div class="tl-dot d-rose"></div></div>
+        <div class="tl-body"><h4>Synthèse et carnet de stage</h4><p>Entrée réflexive individuelle écrite, puis tour de table. Formalisation progressive du carnet.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="duo-cards">
+    <div class="duo-card">
+      <i class="ti ti-notebook" aria-hidden="true"></i>
+      <h3>Carnet de stage</h3>
+      <p>12 entrées progressives du stage groupé au bilan de fin. Observation → analyse → réflexion. Rendu en fin de semestre.</p>
+    </div>
+    <div class="duo-card terra">
+      <i class="ti ti-eye" aria-hidden="true"></i>
+      <h3>Partir du terrain</h3>
+      <p>Chaque séance ancre la théorie dans ce que les étudiants ont vécu lundi ou jeudi. La didactique éclaire la pratique, pas l'inverse.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SESSIONS ===== -->
+<div class="view" id="view-sessions">
+  <div class="sessions-header">
+    <h2>11 séances</h2>
+    <div class="filter-chips">
+      <button class="filter-btn active" onclick="filterAxe(0,this)">Toutes</button>
+      <button class="filter-btn" onclick="filterAxe(1,this)">Observer</button>
+      <button class="filter-btn" onclick="filterAxe(2,this)">Concevoir</button>
+      <button class="filter-btn" onclick="filterAxe(3,this)">Gérer</button>
+      <button class="filter-btn" onclick="filterAxe(4,this)">Évaluer</button>
+      <button class="filter-btn" onclick="filterAxe(5,this)">Réfléchir</button>
+    </div>
+  </div>
+  <div class="sessions-grid" id="sessions-grid"></div>
+</div>
+
+<!-- ===== AXES ===== -->
+<div class="view" id="view-axes">
+  <div style="margin-bottom:22px;">
+    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;margin-bottom:5px;">5 axes thématiques</h2>
+    <p style="color:var(--text-soft);font-size:14px;">Cliquer sur une séance pour l'ouvrir en détail.</p>
+  </div>
+  <div class="axes-grid" id="axes-grid"></div>
+</div>
+
+<!-- ===== CARNET ===== -->
+<div class="view" id="view-carnet">
+  <div style="margin-bottom:24px;">
+    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;margin-bottom:6px;">Carnet de stage</h2>
+    <p style="color:var(--text-soft);font-size:14px;max-width:560px;line-height:1.6;">12 entrées réflexives, du stage groupé au bilan de semestre. Deux vues : la frise des consignes pour l'étudiant, l'exemple complété pour le formateur.</p>
+  </div>
+  <div class="carnet-nav">
+    <button class="active" onclick="showCarnet('frise',this)">Frise des entrées</button>
+    <button onclick="showCarnet('exemple',this)">Exemple complété</button>
+  </div>
+
+  <!-- FRISE -->
+  <div class="carnet-view active" id="cv-frise">
+    <div class="carn-timeline" id="carnet-timeline"></div>
+  </div>
+
+  <!-- EXEMPLE COMPLÉTÉ -->
+  <div class="carnet-view" id="cv-exemple">
+    <div class="exemple-header">
+      <h3>Carnet exemple — Élève fonctionnaire M1</h3>
+      <div class="entree-nav" id="entree-nav"></div>
+    </div>
+    <div id="entrees-container"></div>
+  </div>
+</div>
+
+</main>
+
+<!-- MODAL SESSIONS -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script>
+const AXES=[
+  {id:1,label:"Observer",icon:"ti-eye"},
+  {id:2,label:"Concevoir",icon:"ti-pencil"},
+  {id:3,label:"Gérer",icon:"ti-adjustments"},
+  {id:4,label:"Évaluer",icon:"ti-star"},
+  {id:5,label:"Réfléchir",icon:"ti-brain"},
+];
+
+const SESSIONS=[
+  {num:1,axe:1,title:"Qu'est-ce qu'enseigner ? Représentations et attentes",
+   terrain:"Chacun dit en une phrase ce qui l'a surpris ou déstabilisé depuis le début du stage groupé. Collecte sans jugement — le formateur ne commente pas encore.",
+   apport:"Ce que 'enseigner' signifie selon les approches (transmissif, constructiviste, socioconstructiviste) — ancré sur les mots du groupe, pas ex cathedra.",
+   atelier:"Groupes de 4 : portrait collectif de 'l'enseignant idéal' en carte mentale. Mise en commun : qu'est-ce qui revient ? Qu'est-ce qui diverge ?",
+   numerique:"Wooclap pour recueillir les représentations en live. Analyse collective des résultats en temps réel.",
+   carnet:"Première entrée : «Ce que j'attends de ce cours / ce que je veux comprendre de mon stage.»",
+   livrable:"Carte mentale collective"},
+  {num:2,axe:1,title:"Observer sans (trop) interpréter",
+   terrain:"En binôme : 'Raconte une scène de classe que tu as vue pendant le stage groupé.' L'autre écoute, pose des questions, ne commente pas encore.",
+   apport:"Qu'est-ce qu'observer vraiment ? Focales : enseignant, élèves, interactions, espace, temps. Différence entre décrire et interpréter — avec exemples tirés des récits.",
+   atelier:"Groupes de 3 : construction d'une grille d'observation personnalisée selon la discipline et le niveau. Présentation croisée et critique bienveillante.",
+   numerique:"Extrait vidéo de classe (Néopass@ction) : observer avec leur grille, comparer les relevés entre binômes.",
+   carnet:"'Qu'est-ce que j'avais vu pendant le stage groupé ? Qu'est-ce que j'aurais raté ?' Retour sur une observation à la lumière de la séance.",
+   livrable:"Grille d'observation personnelle"},
+  {num:3,axe:2,title:"Lire un programme sans se noyer",
+   terrain:"Tour rapide : ont-ils consulté le programme avant de préparer ou d'observer une séance ? Comment ? Discussion sur les pratiques réelles des tuteurs.",
+   apport:"Objectifs, compétences, attendus : démêler le jargon du BO. Comment lire un programme de façon opérationnelle — ce qu'il faut trouver, ce qu'on peut ignorer.",
+   atelier:"En binôme : chaque binôme reçoit une page de BO et en extrait l'objectif principal, deux activités possibles, un risque de hors-sujet. Restitution croisée.",
+   numerique:"Cartographie des ressources fiables : Éduscol, banques de séquences disciplinaires. En binôme : l'un cherche, l'autre évalue la qualité de ce qui est trouvé.",
+   carnet:"'Le programme de ma classe de stage : ce que j'y comprends, ce qui me résiste encore.'",
+   livrable:"Lecture opérationnelle d'un programme"},
+  {num:4,axe:2,title:"Concevoir une séance : la chaîne logique",
+   terrain:"Groupes de 4 : chacun décrit une séance observée chez son tuteur. Le groupe identifie la logique (ou son absence) entre objectif, activités et trace écrite.",
+   apport:"La chaîne objectif → activités → trace écrite → évaluation. Les erreurs classiques de conception que l'on voit souvent en stage.",
+   atelier:"Trinômes — rétro-ingénierie d'une fiche imparfaite : identifier les ruptures dans la chaîne, proposer des corrections argumentées.",
+   numerique:"Notion ou équivalent : construire ensemble un template de fiche de préparation simple et réutilisable pour le stage filé.",
+   carnet:"Ébauche d'une séance à venir ou analyse d'une séance observée selon la chaîne logique.",
+   livrable:"Template de fiche de préparation"},
+  {num:5,axe:2,title:"La consigne, cet objet mystérieux",
+   terrain:"En binôme : 'Cite une consigne donnée ou entendue chez ton tuteur cette semaine. Est-ce que les élèves l'ont comprise ?' Collecte anonyme sur tableau partagé.",
+   apport:"Ce qui fait une bonne consigne : clarté, modalité (orale/écrite/multimodale), vérification de compréhension. Appui sur des extraits de recherche accessibles.",
+   atelier:"Groupes de 4 — clinique de la consigne : classer 4 consignes de la moins à la plus efficace, argumenter, réécrire la pire. Débat entre groupes.",
+   numerique:"Consignes multimodales : combiner texte, audio, image pour les élèves à besoins particuliers. Exploration d'un outil simple.",
+   carnet:"'Une consigne que je veux améliorer — avant / après.'",
+   livrable:"Banque de consignes améliorées"},
+  {num:6,axe:3,title:"Gérer la classe : posture, espace, transitions",
+   terrain:"Groupes de 4 : 'Décris un moment de flottement ou de tension chez ton tuteur.' Le groupe cherche ensemble sans juger l'enseignant observé.",
+   apport:"Ce qui se joue avant même de parler : posture, placement, regard, voix, gestion des transitions. La classe comme espace physique à habiter.",
+   atelier:"En binôme : visionnage de courts extraits vidéo (entrée, transition, incident). Focale assignée (enseignant / élèves / espace / temps), puis croisement des relevés.",
+   numerique:"Le numérique comme levier ou perturbateur de la gestion de classe. Analyse de cas réels apportés par les étudiants.",
+   carnet:"'Ma posture en classe — ce que je perçois de moi-même quand j'interviens, ce que je veux travailler.'",
+   livrable:"Analyse de séquences vidéo"},
+  {num:7,axe:3,title:"Différencier dès la conception",
+   terrain:"Tour de table : ont-ils vu de la différenciation en stage ? Collecte au tableau : différenciation réelle vs différenciation de façade.",
+   apport:"Différenciation des contenus, des processus, des productions, des structures. Une posture de conception, pas une rustine après coup.",
+   atelier:"Trinômes : reprendre une séance conçue en S4 et y intégrer deux niveaux de différenciation. Présentation et discussion sur la faisabilité réelle en stage.",
+   numerique:"Outils pour la différenciation : ressources DYS, supports multimodaux accessibles. Chaque binôme teste un outil et en fait un mini-retour au groupe.",
+   carnet:"'Dans ma classe de stage, qui a besoin de quoi ? Ce que je peux raisonnablement essayer.'",
+   livrable:"Séance différenciée"},
+  {num:8,axe:4,title:"Évaluer autrement : le feedback qui apprend",
+   terrain:"En binôme : 'Comment ton tuteur évalue-t-il ses élèves ?' Mise en commun : diversité ou uniformité des pratiques observées dans le groupe ?",
+   apport:"Évaluation formative vs sommative en pratique. Ce que la recherche dit du feedback efficace. Auto-évaluation et co-évaluation : pourquoi et comment.",
+   atelier:"Groupes de 4 : concevoir un moment d'évaluation formative pour une séance réelle de leur stage. Présentation et critique croisée.",
+   numerique:"Test en live de Wooclap et Quizlet : côté élève d'abord pour ressentir ce que ça fait, puis côté enseignant pour comprendre la conception.",
+   carnet:"'Ce que j'ai retenu sur l'évaluation — et ce que je vais essayer dès la prochaine séance de stage.'",
+   livrable:"Séquence d'évaluation formative"},
+  {num:9,axe:5,title:"Analyser sa propre pratique — le modèle ALACT",
+   terrain:"Écriture individuelle 5 min : 'Une séance où j'ai eu un rôle actif — ce qui s'est passé, ce que j'ai ressenti.' Partage en binôme : l'autre écoute et pose des questions, sans donner de réponses.",
+   apport:"Le modèle ALACT : Action → Regard rétrospectif → Aspects essentiels → Créer des alternatives → Expérimenter. Outil concret d'analyse réflexive.",
+   atelier:"Analyse guidée en binôme d'une séance menée ou co-animée, étape par étape avec ALACT. Rôles inversés ensuite.",
+   numerique:"Journal de bord numérique vs papier : Notion, doc partagé, carnet audio. Chacun choisit son format et argumente son choix.",
+   carnet:"Application complète des étapes ALACT à une situation personnelle — première entrée réflexive structurée du carnet.",
+   livrable:"Analyse ALACT complète"},
+  {num:10,axe:4,title:"Le numérique en classe : plus-value ou effet de mode ?",
+   terrain:"Groupes de 4 : recenser tous les usages numériques observés depuis septembre. Classement spontané : utile / gadget / ambigu. Justifier chaque placement.",
+   apport:"Cadre SAMR ou RAT pour analyser un usage numérique : pas pour juger mais pour décrire ce que le numérique change (ou pas) dans l'apprentissage des élèves.",
+   atelier:"Trinômes : concevoir une activité avec numérique et la même sans. Comparer ce qui change vraiment — et ce que ça coûte (temps, attention, équipement).",
+   numerique:"Curation collective : chaque binôme propose un outil, le groupe l'évalue avec SAMR/RAT. Construction d'une boîte à outils partagée pour toute la promo.",
+   carnet:"'Mon rapport au numérique en tant qu'enseignant débutant : où j'en suis, ce qui me freine, ce que je veux tester.'",
+   livrable:"Boîte à outils numérique collective"},
+  {num:11,axe:5,title:"Bilan, projection, ce qu'on emporte",
+   terrain:"Groupes de 4 : identifier trois apprentissages concrets du semestre. Partage en grand groupe : ce qui revient le plus souvent, ce qui diverge.",
+   apport:"Synthèse des cinq axes. Liens entre les séances. Ce qui reste à explorer au S2 — notamment la prise en responsabilité progressive.",
+   atelier:"'La carte de mon développement professionnel' : ce que je savais faire / sais faire maintenant / veux apprendre. Formalisé individuellement, partagé en binôme.",
+   numerique:"La boîte à outils numérique collective (S10), enrichie lors de cette séance. Chacun repart avec la version complète de la promo.",
+   carnet:"Finalisation et rendu : relecture de l'ensemble du carnet, mise en forme, entrée finale bilan.",
+   livrable:"Carnet de stage finalisé"},
+];
+
+const AXEDESC={
+  1:"Point de départ : ils arrivent du stage groupé, souvent démunis face à ce qu'ils ont vu. Apprendre à observer avant d'agir.",
+  2:"Quand le stage filé commence, la question de la préparation devient urgente. Construire avec une logique claire.",
+  3:"Ce qui les stresse le plus. Tout ce qui se joue avant même d'ouvrir la bouche : posture, espace, voix.",
+  4:"Souvent réduit à la note. À repenser complètement — feedback, auto-évaluation, évaluation formative.",
+  5:"Le fil rouge, travaillé en profondeur. Apprendre à se regarder enseigner pour progresser vraiment.",
+};
+
+const ENTREES=[
+  {id:"e0",num:"Avant S1",titre:"Avant le stage groupé",moment:"Semaine du 21 septembre",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"En deux paragraphes : ce que tu imagines de ta première semaine en classe. Ce que tu attends. Ce qui t'inquiète concrètement."},
+     {h:"Mon profil de départ",type:"champs",champs:["Ma discipline","Mon établissement d'accueil","Mon tuteur / ma tutrice","Niveaux des classes que je vais suivre"]},
+   ]},
+  {id:"e1",num:"Entrée 1",titre:"Après le stage groupé — ce que j'ai vu",moment:"Fin de la semaine du 2 octobre",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Choisis une scène de classe précise vue pendant ces deux semaines. Décris-la factuellement : qui fait quoi, quand, comment. Ne l'explique pas encore."},
+     {h:"Ma scène",type:"aire",placeholder:"Description factuelle — sans interprétation..."},
+     {h:"Ce qui m'a surpris",type:"consigne",txt:"Une chose que tu n'avais pas anticipée — dans la gestion du temps, dans les interactions, dans la façon dont l'enseignant parle ou se déplace."},
+     {h:"Ma première question de semestre",type:"aire",placeholder:"Une phrase, pas plus."},
+   ]},
+  {id:"e2",num:"Entrée 2",titre:"Observer sans interpréter — retour sur ma grille",moment:"Après la séance 2",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Tu as construit une grille en séance. Tu l'as utilisée (ou essayé) en stage filé. Qu'est-ce qui a fonctionné ? Qu'est-ce qui était trop vague ou trop étroit ?"},
+     {h:"Bilan de la grille",type:"aire",placeholder:"Ce qui a marché / ce que j'aurais reformulé..."},
+     {h:"Ce que j'avais vu / ce que j'aurais raté",type:"table2",cols:["Ce que j'avais noté","Ce que je noterai différemment maintenant"]},
+   ]},
+  {id:"e3",num:"Entrée 3",titre:"Lire le programme de ma classe",moment:"Après la séance 3",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Prends le programme de la classe que tu suis. Identifie l'objectif de la séquence en cours chez ton tuteur. Le retrouves-tu dans le BO ?"},
+     {h:"Ce que je comprends",type:"aire",placeholder:"Ce que je comprends clairement dans le programme..."},
+     {h:"Ce qui me résiste encore",type:"aire",placeholder:"Ce qui reste flou ou difficile à opérationnaliser..."},
+   ]},
+  {id:"e4",num:"Entrée 4",titre:"Analyser une séance observée",moment:"Après la séance 4",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Prends une séance vue chez ton tuteur. Reconstitue la chaîne logique : objectif, activités, trace écrite, évaluation."},
+     {h:"La chaîne logique",type:"table4",cols:["Objectif","Activités proposées","Trace écrite","Évaluation"]},
+     {h:"Ce que tu ferais différemment",type:"consigne",txt:"Sans juger le tuteur — qu'aurais-tu choisi, et pourquoi ?"},
+     {h:"Ma réponse",type:"aire",placeholder:""},
+   ]},
+  {id:"e5",num:"Entrée 5",titre:"Une consigne — avant / après",moment:"Après la séance 5",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Transcris mot pour mot une consigne observée ou formulée. Analyse-la : était-elle claire ? La modalité était-elle adaptée ? Les élèves l'ont-ils comprise du premier coup ?"},
+     {h:"La consigne telle quelle",type:"aire",placeholder:"Transcription exacte..."},
+     {h:"Mon analyse",type:"aire",placeholder:"Clarté, modalité, compréhension des élèves..."},
+     {h:"Ce que j'aurais formulé",type:"aire",placeholder:"Ma réécriture..."},
+   ]},
+  {id:"e6",num:"Entrée 6",titre:"Un moment de tension ou de flottement",moment:"Après la séance 6",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Décris un moment où la classe a décroché ou où une tension est apparue. D'abord les faits. Puis ce que tu en comprends."},
+     {h:"Les faits",type:"aire",placeholder:"Description factuelle du moment..."},
+     {h:"Ce que j'en comprends maintenant",type:"aire",placeholder:"Analyse après la séance du cours..."},
+     {h:"Ce que je ferai dans cette situation",type:"aire",placeholder:"Ce que j'aurais pu faire / ferai la prochaine fois..."},
+   ]},
+  {id:"e7",num:"Entrée 7",titre:"Hétérogénéité dans ma classe de stage",moment:"Après la séance 7",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Sans nommer les élèves, identifie deux ou trois profils très différents dans la classe. Comment ton tuteur s'adapte-t-il (ou pas) à ces différences ?"},
+     {h:"Profils repérés",type:"aire",placeholder:"Profil 1 : ...\nProfil 2 : ...\nProfil 3 (si pertinent) : ..."},
+     {h:"Ce que j'observe dans les pratiques du tuteur",type:"aire",placeholder:""},
+     {h:"Ce que je pourrais essayer moi-même",type:"aire",placeholder:""},
+   ]},
+  {id:"e8",num:"Entrée 8",titre:"Comment mon tuteur évalue ses élèves",moment:"Après la séance 8",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Décris une pratique d'évaluation observée. Formative ou sommative ? Quel feedback les élèves ont-ils reçu ? Qu'est-ce que ça leur a appris sur leur propre travail ?"},
+     {h:"Description de la pratique",type:"aire",placeholder:""},
+     {h:"Ce que je retiens pour ma propre pratique",type:"aire",placeholder:""},
+     {h:"Une chose que je veux essayer",type:"aire",placeholder:""},
+   ]},
+  {id:"e9",num:"Entrée 9",titre:"Analyse ALACT d'une séance menée",moment:"Après la séance 9",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Utilise les cinq étapes du modèle ALACT pour analyser une séance où tu as eu un rôle actif, même partiel."},
+     {h:"Les cinq étapes",type:"alact"},
+   ]},
+  {id:"e10",num:"Entrée 10",titre:"Les usages numériques en stage",moment:"Après la séance 10",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Liste tous les usages numériques observés depuis septembre. Pour chacun, situe-le dans le cadre SAMR."},
+     {h:"Tableau SAMR",type:"table3",cols:["Usage observé","Outil","Niveau SAMR","Ce que ça change pour les élèves"]},
+     {h:"Mon rapport au numérique",type:"aire",placeholder:"Ce que j'ai envie d'utiliser / ce qui me freine encore..."},
+   ]},
+  {id:"e11",num:"Entrée finale",titre:"Bilan de semestre",moment:"Séance 11 — fin du semestre",
+   sections:[
+     {h:"Ce que je savais faire en septembre",type:"aire",placeholder:""},
+     {h:"Ce que je sais faire maintenant",type:"aire",placeholder:""},
+     {h:"Ce que je veux apprendre au S2",type:"aire",placeholder:""},
+     {h:"La séance que je n'oublierai pas",type:"consigne",txt:"Décris librement le moment qui t'a le plus marqué ce semestre. Pas forcément une réussite — ce qui compte, c'est ce que ça t'a appris sur le métier ou sur toi-même."},
+     {h:"Mon récit",type:"aire",placeholder:"Espace libre — sans contrainte de longueur..."},
+   ]},
+];
+
+function showView(id,btn){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function showCarnet(id,btn){
+  document.querySelectorAll('.carnet-view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.carnet-nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('cv-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function filterAxe(axe,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.session-card').forEach(card=>{
+    card.style.display=(axe===0||parseInt(card.dataset.axe)===axe)?'':'none';
+  });
+}
+
+function getAxe(id){return AXES.find(a=>a.id===id);}
+
+function buildSessions(){
+  const grid=document.getElementById('sessions-grid');
+  const moments=[
+    {key:'terrain',label:'Terrain',icon:'ti-map-pin',ci:0},
+    {key:'apport',label:'Apport',icon:'ti-bulb',ci:1},
+    {key:'atelier',label:'Atelier',icon:'ti-hammer',ci:2},
+    {key:'numerique',label:'Numérique',icon:'ti-device-laptop',ci:3},
+  ];
+  SESSIONS.forEach(s=>{
+    const axe=getAxe(s.axe);
+    const card=document.createElement('div');
+    card.className='session-card';card.dataset.axe=s.axe;
+    card.onclick=()=>openModal(s.num);
+    card.innerHTML=`
+      <div class="card-top">
+        <div class="session-num">${String(s.num).padStart(2,'0')}</div>
+        <div class="card-meta">
+          <h3>${s.title}</h3>
+          <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> ${axe.label}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        ${moments.map(m=>`
+          <div class="moment-row">
+            <div class="moment-icon mi-${m.ci}"><i class="ti ${m.icon}" aria-hidden="true"></i></div>
+            <div class="moment-label">${m.label}</div>
+            <div class="moment-desc">${s[m.key].substring(0,68)}${s[m.key].length>68?'…':''}</div>
+          </div>`).join('')}
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function openModal(num){
+  const s=SESSIONS.find(x=>x.num===num);
+  const axe=getAxe(s.axe);
+  const moments=[
+    {key:'terrain',label:'Retour de terrain',icon:'ti-map-pin',ci:0,dur:'45 min'},
+    {key:'apport',label:'Apport structurant',icon:'ti-bulb',ci:1,dur:'50 min'},
+    {key:'atelier',label:'Atelier en groupe',icon:'ti-hammer',ci:2,dur:'75 min'},
+    {key:'numerique',label:'Capsule numérique',icon:'ti-device-laptop',ci:3,dur:'30 min'},
+    {key:'carnet',label:'Carnet de stage',icon:'ti-notebook',ci:4,dur:'30 min'},
+  ];
+  document.getElementById('modal-content').innerHTML=`
+    <div class="modal-header">
+      <div class="modal-num">${String(s.num).padStart(2,'0')}</div>
+      <div class="modal-header-info">
+        <h2>${s.title}</h2>
+        <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> Axe ${s.axe} — ${axe.label}</span>
+      </div>
+      <button class="close-btn" onclick="closeModalDirect()" aria-label="Fermer"><i class="ti ti-x" aria-hidden="true"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>Déroulé de la séance</h4>
+        ${moments.map(m=>`
+          <div class="modal-moment mm-${m.ci}">
+            <div class="modal-moment-icon mi-${m.ci}"><i class="ti ${m.icon}" aria-hidden="true"></i></div>
+            <div class="modal-moment-content">
+              <h5>${m.label} <span class="duration-tag">${m.dur}</span></h5>
+              <p>${s[m.key]}</p>
+            </div>
+          </div>`).join('')}
+      </div>
+      <div class="modal-section">
+        <h4>Livrable de séance</h4>
+        <div class="livrable-box"><i class="ti ti-file-check" aria-hidden="true"></i> ${s.livrable}</div>
+      </div>
+    </div>`;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){if(e.target===document.getElementById('modal-overlay'))closeModalDirect();}
+function closeModalDirect(){document.getElementById('modal-overlay').classList.remove('open');document.body.style.overflow='';}
+
+function buildAxes(){
+  const grid=document.getElementById('axes-grid');
+  AXES.forEach(axe=>{
+    const sessions=SESSIONS.filter(s=>s.axe===axe.id);
+    const card=document.createElement('div');
+    card.className=`axe-card axe-${axe.id}`;
+    card.innerHTML=`
+      <h3><i class="ti ${axe.icon}" aria-hidden="true"></i> ${axe.label}</h3>
+      <p>${AXEDESC[axe.id]}</p>
+      <div class="axe-sessions-list">
+        ${sessions.map(s=>`<div class="axe-session-item" onclick="openModal(${s.num})"><span>S${s.num}</span>${s.title}</div>`).join('')}
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function buildCarnetFrise(){
+  const tl=document.getElementById('carnet-timeline');
+  const items=[
+    {tag:"Avant S1",titre:"Avant le stage groupé",consigne:"Ce que j'attends / ce qui m'inquiète. Mon profil de départ.",axe:1},
+    {tag:"Entrée 1",titre:"Après le stage groupé",consigne:"Une scène de classe décrite factuellement. Ma première question de semestre.",axe:1},
+    {tag:"Entrée 2",titre:"Observer sans interpréter",consigne:"Bilan de la grille d'observation. Ce que j'aurais raté.",axe:1},
+    {tag:"Entrée 3",titre:"Lire le programme",consigne:"Ce que je comprends / ce qui me résiste dans le programme de ma classe.",axe:2},
+    {tag:"Entrée 4",titre:"Analyser une séance",consigne:"La chaîne logique d'une séance observée. Ce que j'aurais fait différemment.",axe:2},
+    {tag:"Entrée 5",titre:"La consigne — avant / après",consigne:"Une consigne transcrite, analysée, réécrite.",axe:2},
+    {tag:"Entrée 6",titre:"Un moment de tension",consigne:"Faits → compréhension → alternative.",axe:3},
+    {tag:"Entrée 7",titre:"Hétérogénéité",consigne:"Profils repérés. Pratiques du tuteur. Ce que je pourrais essayer.",axe:3},
+    {tag:"Entrée 8",titre:"Évaluation observée",consigne:"Une pratique d'évaluation décrite. Ce que je retiens. Ce que je veux tester.",axe:4},
+    {tag:"Entrée 9",titre:"Analyse ALACT",consigne:"Les cinq étapes appliquées à une séance menée.",axe:5},
+    {tag:"Entrée 10",titre:"Usages numériques",consigne:"Tableau SAMR des usages observés. Mon rapport au numérique.",axe:4},
+    {tag:"Bilan",titre:"Bilan de semestre",consigne:"Ce que je savais / sais / veux apprendre. La séance que je n'oublierai pas.",axe:5},
+  ];
+  const axeColors=[,,1,2,3,4,5];
+  items.forEach(item=>{
+    const axe=getAxe(item.axe);
+    const el=document.createElement('div');
+    el.className='carn-item';
+    el.innerHTML=`
+      <div class="carn-left"><span class="carn-tag">${item.tag}</span></div>
+      <div class="carn-right">
+        <div class="carn-entry">
+          <h4>${item.titre}</h4>
+          <p class="consigne">${item.consigne}</p>
+          <span class="carn-badge badge-${item.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> ${axe.label}</span>
+        </div>
+      </div>`;
+    tl.appendChild(el);
+  });
+}
+
+function buildEntrees(){
+  const nav=document.getElementById('entree-nav');
+  const container=document.getElementById('entrees-container');
+  ENTREES.forEach((e,i)=>{
+    const btn=document.createElement('button');
+    btn.className='entree-btn'+(i===0?' active':'');
+    btn.textContent=e.num;
+    btn.onclick=()=>{
+      document.querySelectorAll('.entree-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.entree-card').forEach(c=>c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('ec-'+e.id).classList.add('active');
+    };
+    nav.appendChild(btn);
+
+    const card=document.createElement('div');
+    card.className='entree-card'+(i===0?' active':'');
+    card.id='ec-'+e.id;
+
+    let body='';
+    e.sections.forEach(s=>{
+      if(s.type==='consigne'){
+        body+=`<div class="entree-section"><h5>${s.h}</h5><div class="consigne-box">${s.txt}</div></div>`;
+      } else if(s.type==='aire'){
+        body+=`<div class="entree-section"><h5>${s.h}</h5><div class="reponse-area">${s.placeholder||'Espace de rédaction...'}</div></div>`;
+      } else if(s.type==='champs'){
+        body+=`<div class="entree-section"><h5>${s.h}</h5>`;
+        s.champs.forEach(c=>{
+          body+=`<div style="display:flex;gap:12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;"><span style="min-width:200px;color:var(--text-soft);font-size:12px;">${c}</span><span style="flex:1;border-bottom:1px dashed var(--border);height:20px;"></span></div>`;
+        });
+        body+=`</div>`;
+      } else if(s.type==='table2'){
+        body+=`<div class="entree-section"><h5>${s.h}</h5><table class="table-simple"><thead><tr>${s.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${[1,2,3].map(()=>`<tr>${s.cols.map(()=>'<td style="height:32px;"></td>').join('')}</tr>`).join('')}</tbody></table></div>`;
+      } else if(s.type==='table4'){
+        body+=`<div class="entree-section"><h5>${s.h}</h5><div style="overflow-x:auto;"><table class="table-simple"><thead><tr>${s.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody><tr>${s.cols.map(()=>'<td style="height:40px;min-width:100px;"></td>').join('')}</tr></tbody></table></div></div>`;
+      } else if(s.type==='table3'){
+        body+=`<div class="entree-section"><h5>${s.h}</h5><div style="overflow-x:auto;"><table class="table-simple"><thead><tr>${s.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${[1,2,3].map(()=>`<tr>${s.cols.map(()=>'<td style="height:32px;min-width:90px;"></td>').join('')}</tr>`).join('')}</tbody></table></div></div>`;
+      } else if(s.type==='alact'){
+        const steps=[
+          {l:'A',h:'Action',d:'Ce qui s\'est passé — description factuelle de la séance ou du moment.'},
+          {l:'L',h:'Looking back',d:'Ce que j\'ai ressenti, ce que j\'ai remarqué pendant la séance.'},
+          {l:'A',h:'Aspects essentiels',d:'Ce qui a vraiment compté — pourquoi ça a marché ou pas ?'},
+          {l:'C',h:'Créer des alternatives',d:'Qu\'aurais-je pu faire autrement ?'},
+          {l:'T',h:'Trial — expérimenter',d:'Ce que je vais essayer la prochaine fois.'},
+        ];
+        body+=`<div class="entree-section"><h5>${s.h}</h5>`;
+        steps.forEach(st=>{
+          body+=`<div class="alact-step"><div class="alact-letter">${st.l}</div><div class="alact-content"><h6>${st.h}</h6><p>${st.d}</p><div class="reponse-area" style="margin-top:6px;min-height:44px;"></div></div></div>`;
+        });
+        body+=`</div>`;
+      }
+    });
+
+    card.innerHTML=`
+      <div class="entree-top">
+        <div class="e-num">${e.num}</div>
+        <h4>${e.titre}</h4>
+        <div class="e-moment">${e.moment}</div>
+      </div>
+      <div class="entree-body">${body}</div>`;
+    container.appendChild(card);
+  });
+}
+
+buildSessions();buildAxes();buildCarnetFrise();buildEntrees();
+</script>
+</body>
+</html>
