@@ -478,13 +478,13 @@ const AXEDESC={
 const SESSIONS=[
   // AXE 1 — OBSERVER
   {num:1,axe:1,
-   title:"Qu'est-ce qu'enseigner ? Représentations et attentes",
-   terrain:"Chacun dit en une phrase ce qui l'a surpris ou déstabilisé depuis le début du stage groupé. Collecte sans jugement — le formateur n'évalue pas encore.",
-   apport:"Ce que « enseigner » signifie selon les approches (transmissif, constructiviste, socioconstructiviste) — ancré sur les mots du groupe, pas plaqué de l'extérieur.",
-   atelier:"Groupes de 4 : portrait collectif de « l'enseignant idéal » en carte mentale. Mise en commun : qu'est-ce qui revient ? Qu'est-ce qui diverge ?",
-   numerique:"Wooclap pour recueillir les représentations en direct. Analyse collective des résultats.",
-   carnet:"Première entrée : « Ce que j'attends de ce cours et ce que je veux comprendre de mon stage. »",
-   livrable:"Carte mentale collective"},
+   title:"Entrer dans l'établissement — acteurs, rôles et premiers repères",
+   terrain:"Pas encore de terrain — c'est la séance qui précède le stage groupé. Recueil des représentations et des questions pratiques : à qui parler ? Comment se présenter ? Qu'est-ce qu'on attend de moi ces deux premières semaines ?",
+   apport:"Les acteurs de l'établissement et leurs rôles (chef d'établissement, CPE, PP, AED, tuteur, documentaliste). Le rôle spécifique du CPE : ce qu'il voit que l'enseignant ne voit pas. Droits et obligations selon le profil (élève fonctionnaire vs étudiant non lauréat). La convention de stage. Se comporter en observateur, pas en enseignant.",
+   atelier:"Groupes de 3 — préparer sa première semaine : qui contacter, comment se présenter, que noter, avec quelle focale observer. Chaque groupe produit un 'kit d'entrée dans l'établissement' (liste de contacts, questions à poser au tuteur, au CPE). Mise en commun.",
+   numerique:"Première prise en main de Pronote ou de l'ENT côté enseignant : cahier de texte, suivi des élèves, absences. Exploration guidée en binôme — côté qu'ils ne connaissent pas encore.",
+   carnet:"Entrée 0 : « Ce que j'attends du stage groupé. Ce qui m'inquiète. Mes trois premières questions pour mon tuteur et pour le CPE. »",
+   livrable:"Kit d'entrée dans l'établissement"},
   {num:2,axe:1,
    title:"Observer sans (trop) interpréter",
    terrain:"En binôme : « Raconte une scène de classe que tu as vue pendant le stage groupé. » L'autre écoute, pose des questions, ne commente pas encore.",
@@ -582,7 +582,17 @@ const ENTREES=[
      {h:"Consigne",type:"consigne",txt:"En deux paragraphes : décris ce que tu imagines de ta première semaine en classe. Ce que tu attends. Ce qui t'inquiète concrètement."},
      {h:"Mon profil de départ",type:"champs",champs:["Ma discipline","Mon établissement d'accueil (S1)","Mon tuteur / ma tutrice","Niveaux des classes que je vais suivre","Mes questions avant d'entrer en classe"]},
    ]},
-  {id:"e1",num:"Entrée 1",titre:"Après le stage groupé — ce que j'ai vu",moment:"Fin de la semaine du 2 octobre · Lien avec S1",color:"var(--terra)",
+  {id:"e0b",num:"Entrée 0b",titre:"Premiers jours en établissement",moment:"Pendant le stage groupé · Lien avec S1",color:"var(--slate)",
+   sections:[
+     {h:"Consigne",type:"consigne",txt:"Tu es dans l'établissement depuis quelques jours. Avant de te concentrer sur les classes, note ce que tu découvres de l'institution elle-même."},
+     {h:"Les acteurs que j'ai rencontrés",type:"table2",cols:["Qui (rôle)","Ce que j'ai compris de sa fonction"]},
+     {h:"Mon premier échange avec le CPE",type:"aire",placeholder:"Ce qu'il ou elle m'a dit, ce que j'ai compris de son rôle, ce qui m'a surpris..."},
+     {h:"Ce que je n'avais pas anticipé dans l'organisation de l'établissement",type:"aire",placeholder:"Emploi du temps, protocoles, outils numériques (Pronote...), vie de l'établissement..."},
+     {h:"Mes trois premières questions sans réponse",type:"aire",placeholder:"1.
+2.
+3."},
+   ]},
+  {id:"e1",num:"Entrée 1",titre:"Après le stage groupé — ce que j'ai vu",moment:"Fin de la semaine du 2 octobre · Lien avec S2",color:"var(--terra)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Choisis une scène de classe précise vue pendant ces deux semaines. Décris-la factuellement : qui fait quoi, quand, comment. Ne l'explique pas encore."},
      {h:"Ma scène",type:"aire",placeholder:"Description factuelle — sans interprétation..."},
@@ -773,7 +783,8 @@ function buildCarnetFrise(){
   const tl=document.getElementById('carnet-timeline');
   const items=[
     {tag:"Avant S1",titre:"Avant le stage groupé",consigne:"Ce que j'attends / ce qui m'inquiète. Mon profil de départ.",axe:1},
-    {tag:"Entrée 1",titre:"Après le stage groupé",consigne:"Une scène de classe décrite factuellement. Ma première question.",axe:1},
+    {tag:"Entrée 0b",titre:"Premiers jours en établissement",consigne:"Acteurs rencontrés, premier échange avec le CPE, ce que je n'avais pas anticipé.",axe:2},
+    {tag:"Entrée 1",titre:"Après le stage groupé — ce que j'ai vu",consigne:"Une scène de classe décrite factuellement. Ma première question.",axe:1},
     {tag:"Entrée 2",titre:"Observer sans interpréter",consigne:"Bilan de la grille (6 focales). Ce que j'aurais raté.",axe:1},
     {tag:"Entrée 3",titre:"Ma posture en classe",consigne:"Un moment de tension décrit, analysé. Ce que je veux travailler.",axe:2},
     {tag:"Entrée 4",titre:"Espace et formes de travail",consigne:"Disposition, formes de travail observées. Qui a besoin de quoi ?",axe:2},
