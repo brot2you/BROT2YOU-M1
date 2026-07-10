@@ -457,7 +457,7 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
 </div>
 
 <script>
-// ── DONNÉES ────────────────────────────────────────────────────
+// -- DONNÉES ----------------------------------------------------
 // Axe 1=Observer 2=Gérer 3=Concevoir 4=Évaluer 5=Réfléchir
 const AXES=[
   {id:1,label:"Observer",icon:"ti-eye"},
@@ -471,18 +471,18 @@ const AXEDESC={
   1:"Point de départ : ils arrivent du stage groupé, souvent démunis face à ce qu'ils ont vu. Apprendre à observer avant d'agir.",
   2:"Ce qui les frappe en premier en stage : la classe qui « tourne » ou ne tourne pas. Posture, espace, formes de travail, transitions.",
   3:"Une fois qu'ils comprennent comment la classe fonctionne, la question de la préparation s'impose. Construire avec une logique claire.",
-  4:"Souvent réduite à la note. À repenser complètement — feedback, évaluation formative, numérique au service de l'apprentissage.",
+  4:"Souvent réduite à la note. À repenser complètement -- feedback, évaluation formative, numérique au service de l'apprentissage.",
   5:"Le fil rouge, travaillé en profondeur en fin de semestre. Apprendre à se regarder enseigner pour progresser vraiment.",
 };
 
 const SESSIONS=[
-  // AXE 1 — OBSERVER
+  // AXE 1 -- OBSERVER
   {num:1,axe:1,
-   title:"Entrer dans l'établissement — acteurs, rôles et premiers repères",
-   terrain:"Pas encore de terrain — c'est la séance qui précède le stage groupé. Recueil des représentations et des questions pratiques : à qui parler ? Comment se présenter ? Qu'est-ce qu'on attend de moi ces deux premières semaines ?",
+   title:"Entrer dans l'établissement -- acteurs, rôles et premiers repères",
+   terrain:"Pas encore de terrain -- c'est la séance qui précède le stage groupé. Recueil des représentations et des questions pratiques : à qui parler ? Comment se présenter ? Qu'est-ce qu'on attend de moi ces deux premières semaines ?",
    apport:"Les acteurs de l'établissement et leurs rôles (chef d'établissement, CPE, PP, AED, tuteur, documentaliste). Le rôle spécifique du CPE : ce qu'il voit que l'enseignant ne voit pas. Droits et obligations selon le profil (élève fonctionnaire vs étudiant non lauréat). La convention de stage. Se comporter en observateur, pas en enseignant.",
-   atelier:"Groupes de 3 — préparer sa première semaine : qui contacter, comment se présenter, que noter, avec quelle focale observer. Chaque groupe produit un 'kit d'entrée dans l'établissement' (liste de contacts, questions à poser au tuteur, au CPE). Mise en commun.",
-   numerique:"Première prise en main de Pronote ou de l'ENT côté enseignant : cahier de texte, suivi des élèves, absences. Exploration guidée en binôme — côté qu'ils ne connaissent pas encore.",
+   atelier:"Groupes de 3 -- préparer sa première semaine : qui contacter, comment se présenter, que noter, avec quelle focale observer. Chaque groupe produit un 'kit d'entrée dans l'établissement' (liste de contacts, questions à poser au tuteur, au CPE). Mise en commun.",
+   numerique:"Première prise en main de Pronote ou de l'ENT côté enseignant : cahier de texte, suivi des élèves, absences. Exploration guidée en binôme -- côté qu'ils ne connaissent pas encore.",
    carnet:"Entrée 0 : « Ce que j'attends du stage groupé. Ce qui m'inquiète. Mes trois premières questions pour mon tuteur et pour le CPE. »",
    livrable:"Kit d'entrée dans l'établissement"},
   {num:2,axe:1,
@@ -491,32 +491,32 @@ const SESSIONS=[
    apport:"Qu'est-ce qu'observer vraiment ? Focales possibles : enseignant, élèves, interactions, espace, temps, formes de travail. Différence entre décrire et interpréter.",
    atelier:"Groupes de 3 : construction d'une grille d'observation personnalisée (6 focales). Présentation croisée et critique bienveillante.",
    numerique:"Extrait vidéo de classe (Néopass@ction) : observer avec leur grille, comparer les relevés entre binômes.",
-   carnet:"« Qu'est-ce que j'avais vu pendant le stage groupé ? Qu'est-ce que j'aurais raté ? » — retour sur une observation à la lumière de la séance.",
+   carnet:"« Qu'est-ce que j'avais vu pendant le stage groupé ? Qu'est-ce que j'aurais raté ? » -- retour sur une observation à la lumière de la séance.",
    livrable:"Grille d'observation personnelle (6 focales)"},
 
-  // AXE 2 — GÉRER
+  // AXE 2 -- GÉRER
   {num:3,axe:2,
    title:"Gérer la classe : posture, espace et transitions",
    terrain:"Groupes de 4 : « Décris un moment de flottement ou de tension que tu as vu chez ton tuteur. » Le groupe cherche ce qui s'est passé, sans juger l'enseignant observé.",
    apport:"Ce qui se joue avant même de parler : posture, placement dans l'espace, regard, voix, gestion des transitions. La classe comme espace physique à habiter.",
    atelier:"En binôme : visionnage de courts extraits vidéo (entrée en classe, transition, incident). Focale assignée (enseignant / élèves / espace / temps), puis croisement des relevés.",
    numerique:"Le numérique comme levier ou perturbateur de la gestion de classe. Analyse de cas réels apportés par les étudiants.",
-   carnet:"« Ma posture en classe — ce que je perçois de moi-même quand j'interviens, ce que je veux travailler. »",
+   carnet:"« Ma posture en classe -- ce que je perçois de moi-même quand j'interviens, ce que je veux travailler. »",
    livrable:"Analyse de séquences vidéo"},
   {num:4,axe:2,
    title:"Espace, formes de travail et différenciation",
-   terrain:"Tour de table : quelles formes de travail ont-ils vues en stage ? Travail individuel, binômes, groupes, classe entière — dans quel but ? Collecte au tableau.",
+   terrain:"Tour de table : quelles formes de travail ont-ils vues en stage ? Travail individuel, binômes, groupes, classe entière -- dans quel but ? Collecte au tableau.",
    apport:"Les formes sociales de travail et leur logique pédagogique. Disposition de la salle et organisation de l'espace. Différenciation : une posture de conception, pas une rustine.",
    atelier:"Trinômes : reprendre une séance observée et concevoir deux formes d'organisation différentes pour la même activité. Discussion sur la faisabilité et les effets.",
    numerique:"Outils pour la différenciation : ressources DYS, supports multimodaux accessibles. Chaque binôme teste un outil et en fait un retour critique.",
    carnet:"« Dans ma classe de stage : qui a besoin de quoi ? La disposition de la salle favorise-t-elle ou freine-t-elle les apprentissages ? »",
    livrable:"Séance reorganisée avec deux formes de travail"},
 
-  // AXE 3 — CONCEVOIR
+  // AXE 3 -- CONCEVOIR
   {num:5,axe:3,
    title:"Lire un programme sans se noyer",
    terrain:"Tour rapide : ont-ils consulté le programme avant d'observer une séance ? Comment ? Discussion sur les pratiques réelles des tuteurs vis-à-vis des programmes.",
-   apport:"Objectifs, compétences, attendus : démêler le jargon du BO. Comment lire un programme de façon opérationnelle — ce qu'il faut trouver, ce qu'on peut ignorer.",
+   apport:"Objectifs, compétences, attendus : démêler le jargon du BO. Comment lire un programme de façon opérationnelle -- ce qu'il faut trouver, ce qu'on peut ignorer.",
    atelier:"En binôme : extraire d'une page de BO l'objectif principal, deux activités possibles, un risque de hors-sujet. Restitution croisée entre binômes.",
    numerique:"Cartographie des ressources fiables (Éduscol, banques de séquences). En binôme : l'un cherche, l'autre évalue la qualité de ce qui est trouvé.",
    carnet:"« Le programme de ma classe de stage : ce que j'y comprends, ce qui me résiste encore. »",
@@ -524,8 +524,8 @@ const SESSIONS=[
   {num:6,axe:3,
    title:"Concevoir une séance : la chaîne logique",
    terrain:"Groupes de 4 : chacun décrit une séance observée chez son tuteur. Le groupe identifie la logique (ou son absence) entre objectif, activités et trace écrite.",
-   apport:"La chaîne objectif → activités → trace écrite → évaluation. Les erreurs classiques de conception que l'on voit souvent en stage.",
-   atelier:"Trinômes — rétro-ingénierie d'une fiche imparfaite : identifier les ruptures dans la chaîne et proposer des corrections argumentées.",
+   apport:"La chaîne objectif -> activités -> trace écrite -> évaluation. Les erreurs classiques de conception que l'on voit souvent en stage.",
+   atelier:"Trinômes -- rétro-ingénierie d'une fiche imparfaite : identifier les ruptures dans la chaîne et proposer des corrections argumentées.",
    numerique:"Notion ou équivalent : construire ensemble un template de fiche de préparation simple et réutilisable pour le stage filé.",
    carnet:"Ébauche d'une séance à venir ou analyse d'une séance observée selon la chaîne logique.",
    livrable:"Template de fiche de préparation"},
@@ -533,37 +533,37 @@ const SESSIONS=[
    title:"La consigne, cet objet mystérieux",
    terrain:"En binôme : « Cite une consigne donnée ou entendue chez ton tuteur cette semaine. Les élèves l'ont-ils comprise ? » Collecte anonyme sur tableau partagé.",
    apport:"Ce qui fait une bonne consigne : clarté, modalité (orale/écrite/multimodale), vérification de compréhension. Appui sur des extraits de recherche accessibles.",
-   atelier:"Groupes de 4 — clinique de la consigne : classer 4 consignes de la moins à la plus efficace, argumenter, réécrire la pire. Débat entre groupes.",
+   atelier:"Groupes de 4 -- clinique de la consigne : classer 4 consignes de la moins à la plus efficace, argumenter, réécrire la pire. Débat entre groupes.",
    numerique:"Consignes multimodales : combiner texte, audio et image pour les élèves à besoins particuliers. Exploration d'un outil simple.",
-   carnet:"« Une consigne que je veux améliorer — avant / après. »",
+   carnet:"« Une consigne que je veux améliorer -- avant / après. »",
    livrable:"Banque de consignes améliorées"},
 
-  // AXE 4 — ÉVALUER
+  // AXE 4 -- ÉVALUER
   {num:8,axe:4,
    title:"Évaluer autrement : le feedback qui apprend",
    terrain:"En binôme : « Comment ton tuteur évalue-t-il ses élèves ? » Mise en commun : diversité ou uniformité des pratiques observées dans le groupe ?",
    apport:"Évaluation formative versus sommative en pratique. Ce que la recherche dit du feedback efficace. Auto-évaluation et co-évaluation : pourquoi et comment.",
    atelier:"Groupes de 4 : concevoir un moment d'évaluation formative pour une séance réelle de stage. Présentation et critique croisée.",
    numerique:"Test en direct de Wooclap et Quizlet : côté élève d'abord pour ressentir ce que ça fait, puis côté enseignant pour comprendre la conception.",
-   carnet:"« Ce que j'ai retenu sur l'évaluation — et ce que je vais essayer dès la prochaine séance de stage. »",
+   carnet:"« Ce que j'ai retenu sur l'évaluation -- et ce que je vais essayer dès la prochaine séance de stage. »",
    livrable:"Séquence d'évaluation formative"},
   {num:9,axe:4,
    title:"Le numérique en classe : vraie plus-value ou effet de mode ?",
    terrain:"Groupes de 4 : recenser tous les usages numériques observés depuis septembre. Classement spontané : utile / gadget / ambigu. Justifier chaque placement.",
    apport:"Cadre SAMR pour analyser un usage numérique : pas pour juger, mais pour décrire ce que le numérique change (ou pas) dans l'apprentissage des élèves.",
-   atelier:"Trinômes : concevoir une activité avec numérique et la même sans. Comparer ce qui change vraiment — et ce que ça coûte (temps, attention, équipement).",
+   atelier:"Trinômes : concevoir une activité avec numérique et la même sans. Comparer ce qui change vraiment -- et ce que ça coûte (temps, attention, équipement).",
    numerique:"Curation collective : chaque binôme propose un outil, le groupe l'évalue avec SAMR. Construction d'une boîte à outils partagée pour toute la promo.",
    carnet:"« Mon rapport au numérique en tant qu'enseignant débutant : où j'en suis, ce qui me freine, ce que je veux tester. »",
    livrable:"Boîte à outils numérique collective"},
 
-  // AXE 5 — RÉFLÉCHIR
+  // AXE 5 -- RÉFLÉCHIR
   {num:10,axe:5,
-   title:"Analyser sa propre pratique — le modèle ALACT",
-   terrain:"Écriture individuelle 5 min : « Une séance où j'ai eu un rôle actif — ce qui s'est passé, ce que j'ai ressenti. » Partage en binôme : l'autre écoute et pose des questions sans donner de réponses.",
-   apport:"Le modèle ALACT : Action → Regard rétrospectif → Aspects essentiels → Créer des alternatives → Expérimenter. Outil concret d'analyse réflexive applicable dès maintenant.",
+   title:"Analyser sa propre pratique -- le modèle ALACT",
+   terrain:"Écriture individuelle 5 min : « Une séance où j'ai eu un rôle actif -- ce qui s'est passé, ce que j'ai ressenti. » Partage en binôme : l'autre écoute et pose des questions sans donner de réponses.",
+   apport:"Le modèle ALACT : Action -> Regard rétrospectif -> Aspects essentiels -> Créer des alternatives -> Expérimenter. Outil concret d'analyse réflexive applicable dès maintenant.",
    atelier:"Analyse guidée en binôme d'une séance menée ou co-animée, étape par étape avec ALACT. Rôles inversés ensuite.",
    numerique:"Journal de bord numérique versus papier : Notion, document partagé, carnet audio. Chacun choisit son format et argumente son choix.",
-   carnet:"Application complète des cinq étapes ALACT à une situation personnelle — première entrée réflexive structurée.",
+   carnet:"Application complète des cinq étapes ALACT à une situation personnelle -- première entrée réflexive structurée.",
    livrable:"Analyse ALACT complète"},
   {num:11,axe:5,
    title:"Bilan, projection et ce qu'on emporte",
@@ -575,98 +575,96 @@ const SESSIONS=[
    livrable:"Carnet de stage finalisé"},
 ];
 
-// ── ENTRÉES CARNET (alignées sur le nouvel ordre) ────────────
+// -- ENTRÉES CARNET (alignées sur le nouvel ordre) ------------
 const ENTREES=[
   {id:"e0",num:"Avant S1",titre:"Avant le stage groupé",moment:"Semaine du 21 septembre",color:"var(--terra)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"En deux paragraphes : décris ce que tu imagines de ta première semaine en classe. Ce que tu attends. Ce qui t'inquiète concrètement."},
      {h:"Mon profil de départ",type:"champs",champs:["Ma discipline","Mon établissement d'accueil (S1)","Mon tuteur / ma tutrice","Niveaux des classes que je vais suivre","Mes questions avant d'entrer en classe"]},
    ]},
-  {id:"e0b",num:"Entrée 0b",titre:"Premiers jours en établissement",moment:"Pendant le stage groupé · Lien avec S1",color:"var(--slate)",
+  {id:"e0b",num:"Entrée 0b",titre:"Premiers jours en établissement",moment:"Pendant le stage groupé . Lien avec S1",color:"var(--slate)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Tu es dans l'établissement depuis quelques jours. Avant de te concentrer sur les classes, note ce que tu découvres de l'institution elle-même."},
      {h:"Les acteurs que j'ai rencontrés",type:"table2",cols:["Qui (rôle)","Ce que j'ai compris de sa fonction"]},
      {h:"Mon premier échange avec le CPE",type:"aire",placeholder:"Ce qu'il ou elle m'a dit, ce que j'ai compris de son rôle, ce qui m'a surpris..."},
      {h:"Ce que je n'avais pas anticipé dans l'organisation de l'établissement",type:"aire",placeholder:"Emploi du temps, protocoles, outils numériques (Pronote...), vie de l'établissement..."},
-     {h:"Mes trois premières questions sans réponse",type:"aire",placeholder:"1.
-2.
-3."},
+     {h:"Mes trois premières questions sans réponse",type:"aire",placeholder:"1.\n2.\n3."},
    ]},
-  {id:"e1",num:"Entrée 1",titre:"Après le stage groupé — ce que j'ai vu",moment:"Fin de la semaine du 2 octobre · Lien avec S2",color:"var(--terra)",
+  {id:"e1",num:"Entrée 1",titre:"Après le stage groupé -- ce que j'ai vu",moment:"Fin de la semaine du 2 octobre . Lien avec S2",color:"var(--terra)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Choisis une scène de classe précise vue pendant ces deux semaines. Décris-la factuellement : qui fait quoi, quand, comment. Ne l'explique pas encore."},
-     {h:"Ma scène",type:"aire",placeholder:"Description factuelle — sans interprétation..."},
+     {h:"Ma scène",type:"aire",placeholder:"Description factuelle -- sans interprétation..."},
      {h:"Ce qui m'a surpris",type:"aire",placeholder:"Une chose que je n'avais pas anticipée..."},
      {h:"Ma première question de semestre",type:"aire",placeholder:"Une phrase, pas plus."},
    ]},
-  {id:"e2",num:"Entrée 2",titre:"Retour sur ma grille d'observation",moment:"Après la séance 2 · Axe Observer",color:"var(--terra)",
+  {id:"e2",num:"Entrée 2",titre:"Retour sur ma grille d'observation",moment:"Après la séance 2 . Axe Observer",color:"var(--terra)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Tu as construit une grille en séance (6 focales). Tu l'as utilisée ou essayé de l'utiliser en stage filé. Qu'est-ce qui a fonctionné ? Qu'est-ce qui était trop vague ou trop étroit ?"},
      {h:"Bilan de ma grille",type:"aire",placeholder:"Ce qui a marché / ce que j'aurais reformulé..."},
      {h:"Ce que j'avais vu / ce que j'aurais raté",type:"table2",cols:["Ce que j'avais noté pendant le stage groupé","Ce que je noterai différemment maintenant"]},
    ]},
-  {id:"e3",num:"Entrée 3",titre:"Ma posture en classe",moment:"Après la séance 3 · Axe Gérer",color:"var(--slate)",
+  {id:"e3",num:"Entrée 3",titre:"Ma posture en classe",moment:"Après la séance 3 . Axe Gérer",color:"var(--slate)",
    sections:[
-     {h:"Consigne",type:"consigne",txt:"Décris un moment de flottement ou de tension que tu as observé. D'abord les faits — puis ce que tu en comprends maintenant, après la séance."},
+     {h:"Consigne",type:"consigne",txt:"Décris un moment de flottement ou de tension que tu as observé. D'abord les faits -- puis ce que tu en comprends maintenant, après la séance."},
      {h:"Les faits",type:"aire",placeholder:"Ce qui s'est passé exactement..."},
      {h:"Ce que j'en comprends maintenant",type:"aire",placeholder:"Après l'apport de la séance..."},
-     {h:"Ma posture — ce que je perçois, ce que je veux travailler",type:"aire",placeholder:""},
+     {h:"Ma posture -- ce que je perçois, ce que je veux travailler",type:"aire",placeholder:""},
    ]},
-  {id:"e4",num:"Entrée 4",titre:"Espace, formes de travail, hétérogénéité",moment:"Après la séance 4 · Axe Gérer",color:"var(--slate)",
+  {id:"e4",num:"Entrée 4",titre:"Espace, formes de travail, hétérogénéité",moment:"Après la séance 4 . Axe Gérer",color:"var(--slate)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Observe la disposition de la salle et les formes de travail dans ta classe de stage. La disposition favorise-t-elle les apprentissages ? Qui a besoin de quoi ?"},
      {h:"Disposition et formes de travail observées",type:"table2",cols:["Ce que j'observe (disposition, formes)","Ce que ça permet ou empêche"]},
      {h:"Profils d'élèves repérés (sans nommer)",type:"aire",placeholder:"Profil 1 : ...\nProfil 2 : ...\nProfil 3 (si pertinent) : ..."},
      {h:"Ce que je pourrais essayer",type:"aire",placeholder:""},
    ]},
-  {id:"e5",num:"Entrée 5",titre:"Lire le programme de ma classe",moment:"Après la séance 5 · Axe Concevoir",color:"var(--amber)",
+  {id:"e5",num:"Entrée 5",titre:"Lire le programme de ma classe",moment:"Après la séance 5 . Axe Concevoir",color:"var(--amber)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Prends le programme de la classe que tu suis. Identifie l'objectif de la séquence en cours chez ton tuteur. Le retrouves-tu dans le BO ? Comment ?"},
      {h:"Ce que je comprends",type:"aire",placeholder:"Ce que je comprends clairement dans le programme..."},
      {h:"Ce qui me résiste encore",type:"aire",placeholder:"Ce qui reste flou ou difficile à opérationnaliser..."},
    ]},
-  {id:"e6",num:"Entrée 6",titre:"Analyser une séance observée",moment:"Après la séance 6 · Axe Concevoir",color:"var(--amber)",
+  {id:"e6",num:"Entrée 6",titre:"Analyser une séance observée",moment:"Après la séance 6 . Axe Concevoir",color:"var(--amber)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Prends une séance vue chez ton tuteur. Reconstitue la chaîne logique : objectif, activités, trace écrite, évaluation. Qu'aurais-tu fait différemment ?"},
      {h:"La chaîne logique",type:"table4",cols:["Objectif","Activités proposées","Trace écrite","Évaluation"]},
-     {h:"Ce que j'aurais fait différemment — et pourquoi",type:"aire",placeholder:"Sans juger le tuteur..."},
+     {h:"Ce que j'aurais fait différemment -- et pourquoi",type:"aire",placeholder:"Sans juger le tuteur..."},
    ]},
-  {id:"e7",num:"Entrée 7",titre:"Une consigne — avant / après",moment:"Après la séance 7 · Axe Concevoir",color:"var(--amber)",
+  {id:"e7",num:"Entrée 7",titre:"Une consigne -- avant / après",moment:"Après la séance 7 . Axe Concevoir",color:"var(--amber)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Transcris mot pour mot une consigne observée ou formulée. Analyse-la : était-elle claire ? La modalité était-elle adaptée ? Les élèves l'ont-ils comprise du premier coup ?"},
      {h:"La consigne telle quelle",type:"aire",placeholder:"Transcription exacte..."},
      {h:"Mon analyse",type:"aire",placeholder:"Clarté, modalité, compréhension des élèves..."},
      {h:"Ce que j'aurais formulé",type:"aire",placeholder:"Ma réécriture..."},
    ]},
-  {id:"e8",num:"Entrée 8",titre:"Comment mon tuteur évalue ses élèves",moment:"Après la séance 8 · Axe Évaluer",color:"var(--blue)",
+  {id:"e8",num:"Entrée 8",titre:"Comment mon tuteur évalue ses élèves",moment:"Après la séance 8 . Axe Évaluer",color:"var(--blue)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Décris une pratique d'évaluation observée. Formative ou sommative ? Quel feedback les élèves ont-ils reçu ? Qu'est-ce que ça leur a appris sur leur propre travail ?"},
      {h:"Description de la pratique",type:"aire",placeholder:""},
      {h:"Ce que je retiens pour ma propre pratique",type:"aire",placeholder:""},
      {h:"Une chose que je veux essayer",type:"aire",placeholder:""},
    ]},
-  {id:"e9",num:"Entrée 9",titre:"Les usages numériques en stage",moment:"Après la séance 9 · Axe Évaluer",color:"var(--blue)",
+  {id:"e9",num:"Entrée 9",titre:"Les usages numériques en stage",moment:"Après la séance 9 . Axe Évaluer",color:"var(--blue)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Liste tous les usages numériques observés depuis septembre. Pour chacun, situe-le dans le cadre SAMR (Substitution, Augmentation, Modification, Redéfinition)."},
      {h:"Tableau SAMR",type:"table3",cols:["Usage observé","Outil","Niveau SAMR","Ce que ça change pour les élèves"]},
      {h:"Mon rapport au numérique",type:"aire",placeholder:"Ce que j'ai envie d'utiliser / ce qui me freine encore..."},
    ]},
-  {id:"e10",num:"Entrée 10",titre:"Analyse ALACT d'une séance menée",moment:"Après la séance 10 · Axe Réfléchir",color:"var(--rose)",
+  {id:"e10",num:"Entrée 10",titre:"Analyse ALACT d'une séance menée",moment:"Après la séance 10 . Axe Réfléchir",color:"var(--rose)",
    sections:[
      {h:"Consigne",type:"consigne",txt:"Utilise les cinq étapes du modèle ALACT pour analyser une séance où tu as eu un rôle actif, même partiel. Sois précis dans les faits, honnête dans l'analyse."},
      {h:"Les cinq étapes",type:"alact"},
    ]},
-  {id:"e11",num:"Entrée finale",titre:"Bilan de semestre",moment:"Séance 11 · Axe Réfléchir",color:"var(--rose)",
+  {id:"e11",num:"Entrée finale",titre:"Bilan de semestre",moment:"Séance 11 . Axe Réfléchir",color:"var(--rose)",
    sections:[
      {h:"Ce que je savais faire en septembre",type:"aire",placeholder:""},
      {h:"Ce que je sais faire maintenant",type:"aire",placeholder:""},
      {h:"Ce que je veux apprendre au S2",type:"aire",placeholder:""},
-     {h:"La séance que je n'oublierai pas",type:"consigne",txt:"Décris librement le moment qui t'a le plus marqué ce semestre. Pas forcément une réussite — ce qui compte, c'est ce que ça t'a appris sur le métier ou sur toi-même."},
-     {h:"Mon récit",type:"aire",placeholder:"Espace libre — sans contrainte de longueur..."},
+     {h:"La séance que je n'oublierai pas",type:"consigne",txt:"Décris librement le moment qui t'a le plus marqué ce semestre. Pas forcément une réussite -- ce qui compte, c'est ce que ça t'a appris sur le métier ou sur toi-même."},
+     {h:"Mon récit",type:"aire",placeholder:"Espace libre -- sans contrainte de longueur..."},
    ]},
 ];
 
-// ── FONCTIONS ──────────────────────────────────────────────────
+// -- FONCTIONS --------------------------------------------------
 function showView(id,btn){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
@@ -714,7 +712,7 @@ function buildSessions(){
           <div class="moment-row">
             <div class="moment-icon mi-${m.ci}"><i class="ti ${m.icon}" aria-hidden="true"></i></div>
             <div class="moment-label">${m.label}</div>
-            <div class="moment-desc">${s[m.key].substring(0,68)}${s[m.key].length>68?'…':''}</div>
+            <div class="moment-desc">${s[m.key].substring(0,68)}${s[m.key].length>68?'...':''}</div>
           </div>`).join('')}
       </div>`;
     grid.appendChild(card);
@@ -736,7 +734,7 @@ function openModal(num){
       <div class="modal-num">${String(s.num).padStart(2,'0')}</div>
       <div class="modal-header-info">
         <h2>${s.title}</h2>
-        <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> Axe ${s.axe} — ${axe.label}</span>
+        <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> Axe ${s.axe} -- ${axe.label}</span>
       </div>
       <button class="close-btn" onclick="closeModalDirect()" aria-label="Fermer"><i class="ti ti-x" aria-hidden="true"></i></button>
     </div>
@@ -784,7 +782,7 @@ function buildCarnetFrise(){
   const items=[
     {tag:"Avant S1",titre:"Avant le stage groupé",consigne:"Ce que j'attends / ce qui m'inquiète. Mon profil de départ.",axe:1},
     {tag:"Entrée 0b",titre:"Premiers jours en établissement",consigne:"Acteurs rencontrés, premier échange avec le CPE, ce que je n'avais pas anticipé.",axe:2},
-    {tag:"Entrée 1",titre:"Après le stage groupé — ce que j'ai vu",consigne:"Une scène de classe décrite factuellement. Ma première question.",axe:1},
+    {tag:"Entrée 1",titre:"Après le stage groupé -- ce que j'ai vu",consigne:"Une scène de classe décrite factuellement. Ma première question.",axe:1},
     {tag:"Entrée 2",titre:"Observer sans interpréter",consigne:"Bilan de la grille (6 focales). Ce que j'aurais raté.",axe:1},
     {tag:"Entrée 3",titre:"Ma posture en classe",consigne:"Un moment de tension décrit, analysé. Ce que je veux travailler.",axe:2},
     {tag:"Entrée 4",titre:"Espace et formes de travail",consigne:"Disposition, formes de travail observées. Qui a besoin de quoi ?",axe:2},
@@ -852,11 +850,11 @@ function buildEntrees(){
         body+=`<div class="entree-section"><h5>${s.h}</h5><div style="overflow-x:auto;"><table class="table-simple"><thead><tr>${s.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${[1,2,3,4].map(()=>`<tr>${s.cols.map(()=>'<td style="height:32px;min-width:90px;"></td>').join('')}</tr>`).join('')}</tbody></table></div></div>`;
       } else if(s.type==='alact'){
         const steps=[
-          {l:'A',h:'Action',d:'Ce qui s\'est passé — description factuelle.'},
+          {l:'A',h:'Action',d:'Ce qui s\'est passé -- description factuelle.'},
           {l:'L',h:'Looking back',d:'Ce que j\'ai ressenti, ce que j\'ai remarqué.'},
-          {l:'A',h:'Aspects essentiels',d:'Ce qui a vraiment compté — pourquoi ?'},
+          {l:'A',h:'Aspects essentiels',d:'Ce qui a vraiment compté -- pourquoi ?'},
           {l:'C',h:'Créer des alternatives',d:'Qu\'aurais-je pu faire autrement ?'},
-          {l:'T',h:'Trial — expérimenter',d:'Ce que je vais essayer la prochaine fois.'},
+          {l:'T',h:'Trial -- expérimenter',d:'Ce que je vais essayer la prochaine fois.'},
         ];
         body+=`<div class="entree-section"><h5>${s.h}</h5>`;
         steps.forEach(st=>{
