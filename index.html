@@ -145,6 +145,9 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
 .axe-5{background:var(--rose-light);border-color:var(--rose-border);}
 .axe-5 h3{color:#6B1F3C;}.axe-5 h3 i{color:var(--rose);}
 .badge-5{background:var(--rose-light);color:#6B1F3C;}
+.axe-0{background:#F0F0F0;border-color:#CCCCCC;}
+.axe-0 h3{color:#333333;}.axe-0 h3 i{color:#555555;}
+.badge-0{background:#EEEEEE;color:#333333;}
 .mi-0{background:var(--terra-light);color:var(--terra);}
 .mi-1{background:var(--slate-light);color:var(--slate);}
 .mi-2{background:var(--amber-light);color:var(--amber);}
@@ -268,7 +271,7 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
 
   <div class="stats">
     <div class="stat-card"><div class="stat-number">45</div><div class="stat-label">heures de TD</div></div>
-    <div class="stat-card"><div class="stat-number">11</div><div class="stat-label">séances × 4h</div></div>
+    <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">séances (11×4h + examen)</div></div>
     <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">axes thématiques</div></div>
     <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">entrées carnet</div></div>
   </div>
@@ -402,6 +405,10 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
         <span style="background:var(--rose-light);color:#6B1F3C;border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;min-width:90px;text-align:center;">S10–S11</span>
         <span style="font-size:13px;"><strong>Réfléchir</strong> — Analyser sa pratique avec ALACT, bilan et projection vers le S2.</span>
       </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="background:#EEEEEE;color:#333;border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;min-width:90px;text-align:center;">S12</span>
+        <span style="font-size:13px;"><strong>Examen sur table</strong> — 2h30. Set de documents authentiques, sélection justifiée, séance conçue, regard critique. Rendu du carnet.</span>
+      </div>
     </div>
   </div>
 </div>
@@ -417,6 +424,7 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
       <button class="filter-btn" onclick="filterAxe(3,this)">Concevoir</button>
       <button class="filter-btn" onclick="filterAxe(4,this)">Évaluer</button>
       <button class="filter-btn" onclick="filterAxe(5,this)">Réfléchir</button>
+      <button class="filter-btn" onclick="filterAxe(0,this)">Examen</button>
     </div>
   </div>
   <div class="sessions-grid" id="sessions-grid"></div>
@@ -465,6 +473,7 @@ const AXES=[
   {id:3,label:"Concevoir",icon:"ti-pencil"},
   {id:4,label:"Évaluer",icon:"ti-star"},
   {id:5,label:"Réfléchir",icon:"ti-brain"},
+  {id:0,label:"Examen",icon:"ti-writing"},
 ];
 
 const AXEDESC={
@@ -585,6 +594,16 @@ const SESSIONS=[
    numerique:"La Digitale (Bingo / Roue) pour le bilan collectif ludique + dépôt final sur Pearltrees de la boîte à outils complète de la promo. Chacun repart avec l'ensemble des ressources produites pendant le semestre.",
    carnet:"Entrée finale : bilan de semestre -- ce que je savais / sais / veux apprendre. La séance que je n'oublierai pas.",
    livrable:"Carnet de stage finalisé + boîte à outils collective"},
+
+  // S12 -- ÉVALUATION
+  {num:12,axe:0,
+   title:"Examen sur table -- Didactiser un set de documents",
+   terrain:"Séance d'évaluation individuelle -- 2h30. Distribution du dossier : set de 5-6 documents authentiques variés (texte, image, graphique, données, témoignage) autour d'une notion communiquée le jour J. Contexte de classe fourni : niveau lié à la discipline de stage, durée de séance, contrainte simple.",
+   apport:"Pas d'apport -- séance d'évaluation. Rappel oral des consignes et des critères (5 min). Les étudiants travaillent en silence et de façon individuelle.",
+   atelier:"Partie 1 (25 min) : sélectionner les documents à utiliser, justifier chaque choix, expliquer l'ordre d'introduction. Partie 2 (80 min) : concevoir une séance d'1h -- objectif langagier opérationnel, déroulé en 3 à 5 phases avec minutage, au moins une consigne rédigée mot pour mot, formes de travail justifiées, trace écrite ou production attendue des élèves, moment d'évaluation formative. Partie 3 (20 min) : identifier le risque principal de la séance conçue et ce qu'on modifierait avec une contrainte supplémentaire.",
+   numerique:"Aucun -- épreuve sans document ni outil numérique.",
+   carnet:"Le carnet de stage est rendu ce jour -- finalisé, relu, mis en forme.",
+   livrable:"Copie d'examen + carnet de stage rendu"},
 ];
 
 // -- ENTRÉES CARNET (alignées sur le nouvel ordre) ------------
@@ -696,7 +715,7 @@ function filterAxe(axe,btn){
     c.style.display=(axe===0||parseInt(c.dataset.axe)===axe)?'':'none';
   });
 }
-function getAxe(id){return AXES.find(a=>a.id===id);}
+function getAxe(id){return AXES.find(a=>a.id===id)||{id:0,label:'Examen',icon:'ti-writing'};}
 
 function buildSessions(){
   const grid=document.getElementById('sessions-grid');
