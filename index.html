@@ -148,6 +148,9 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
 .axe-0{background:#F0F0F0;border-color:#CCCCCC;}
 .axe-0 h3{color:#333333;}.axe-0 h3 i{color:#555555;}
 .badge-0{background:#EEEEEE;color:#333333;}
+.phase-avant{background:#FFF8E1;color:#7A5500;border:1px solid #FFD98A;border-radius:5px;padding:2px 8px;font-size:10px;font-weight:600;}
+.phase-apres{background:var(--slate-light);color:#1D4039;border:1px solid var(--slate-border);border-radius:5px;padding:2px 8px;font-size:10px;font-weight:600;}
+.phase-exam{background:#EEEEEE;color:#333;border:1px solid #CCC;border-radius:5px;padding:2px 8px;font-size:10px;font-weight:600;}
 .mi-0{background:var(--terra-light);color:var(--terra);}
 .mi-1{background:var(--slate-light);color:var(--slate);}
 .mi-2{background:var(--amber-light);color:var(--amber);}
@@ -271,7 +274,7 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
 
   <div class="stats">
     <div class="stat-card"><div class="stat-number">45</div><div class="stat-label">heures de TD</div></div>
-    <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">séances (11×4h + examen)</div></div>
+    <div class="stat-card"><div class="stat-number">13</div><div class="stat-label">séances (12×4h + examen)</div></div>
     <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">axes thématiques</div></div>
     <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">entrées carnet</div></div>
   </div>
@@ -405,9 +408,9 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
         <span style="background:var(--rose-light);color:#6B1F3C;border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;min-width:90px;text-align:center;">S10–S11</span>
         <span style="font-size:13px;"><strong>Réfléchir</strong> — Analyser sa pratique avec ALACT, bilan et projection vers le S2.</span>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <span style="background:#EEEEEE;color:#333;border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;min-width:90px;text-align:center;">S12</span>
-        <span style="font-size:13px;"><strong>Examen sur table</strong> — 2h30. Analyse d'une situation de classe (vignette) + didactisation d'un set de documents + regard critique. Rendu du carnet.</span>
+      <div style="margin-top:12px;padding:10px 14px;background:var(--terra-light);border:1px solid var(--terra-border);border-radius:8px;font-size:13px;">
+        <strong style="color:var(--terra);">Calendrier :</strong>
+        S1–S3 avant le stage groupé (4–18 sept) · Stage groupé 21 sept–2 oct · S4–S12 en stage filé (9 oct–4 déc) · S13 examen (11 déc)
       </div>
     </div>
   </div>
@@ -416,7 +419,7 @@ main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
 <!-- SESSIONS -->
 <div class="view" id="view-sessions">
   <div class="sessions-header">
-    <h2>11 séances</h2>
+    <h2>13 séances</h2>
     <div class="filter-chips">
       <button class="filter-btn active" onclick="filterAxe(0,this)">Toutes</button>
       <button class="filter-btn" onclick="filterAxe(1,this)">Observer</button>
@@ -485,122 +488,128 @@ const AXEDESC={
 };
 
 const SESSIONS=[
-  // S1 -- AXE OBSERVER (séance déjà passée)
-  {num:1,axe:1,
+
+  // ══ AVANT LE STAGE GROUPÉ (S1-S3) ══════════════════════════
+  // Pas de retour de terrain -- on prépare l'observation
+
+  {num:1,axe:1,date:"4 septembre",phase:"Avant le stage groupé",
    title:"Entrer dans l'établissement -- acteurs, rôles et premiers repères",
-   terrain:"Pas encore de terrain -- c'est la séance qui précède le stage groupé. Tour de table : prénom, discipline, une chose qui inquiète avant d'entrer. Mots-clés notés au tableau, regroupés par thèmes.",
-   apport:"Les acteurs de l'établissement (CPE, tuteur, AED, direction, documentaliste). Le rôle spécifique du CPE. Types de séances qu'ils vont observer. Comment se présenter aux élèves. Posture d'observateur. Erreurs classiques des débutants.",
-   atelier:"Didactiser un document authentique -- premier essai. Un document simple distribué (image, publicité, titre de presse). En groupes de 3 : à quel niveau, quelle consigne mot pour mot, que produisent les élèves ? Mise en commun : même document, séances très différentes selon les choix.",
-   numerique:"Pronote côté enseignant -- première prise en main en binôme. Cahier de texte, suivi des élèves, absences. Côté qu'ils ne connaissent pas encore.",
-   carnet:"Entrée 0 : ce que j'attends du stage groupé, ce qui m'inquiète, mes trois premières questions pour le tuteur et le CPE.",
+   terrain:"Pas encore de terrain. Tour de table : prénom, discipline, une chose qui inquiète avant d'entrer dans l'établissement. Mots-clés notés au tableau, regroupés par thèmes -- les peurs, les questions pratiques, les questions sur le rôle.",
+   apport:"Les acteurs de l'établissement (CPE, tuteur, AED, direction, documentaliste). Le rôle spécifique du CPE. Les types de séances qu'ils vont observer. Comment se présenter aux élèves. Posture d'observateur. Les erreurs classiques des débutants.",
+   atelier:"Didactiser un document authentique -- premier essai. Un document simple distribué (image, publicité, titre de presse en anglais). En groupes de 3 : à quel niveau, quelle consigne mot pour mot, que produisent les élèves ? Mise en commun : même document, séances très différentes selon les choix.",
+   numerique:"Pronote côté enseignant -- première prise en main en binôme. Cahier de texte, suivi des élèves, absences.",
+   carnet:"Entrée 0 : ce que j'attends du stage groupé, ce qui m'inquiète, mes trois premières questions pour le tuteur et pour le CPE.",
    livrable:"Kit d'entrée dans l'établissement + première didactisation"},
 
-  // S2 -- AXE OBSERVER
-  {num:2,axe:1,
-   title:"Observer sans interpréter -- focales spécifiques anglais",
-   terrain:"Retour croisé sur S1 et le stage groupé. D'abord : comment s'est passée votre première séance devant les élèves -- ce qu'on avait anticipé en S1 (posture, présentation, langue en classe) vs ce qui s'est réellement passé. Puis en binôme : raconte une scène de classe vue pendant le stage groupé. L'autre écoute, pose des questions, ne commente pas encore. Mise en commun : qu'est-ce qu'on a tous remarqué ? Qu'est-ce qu'on a tous raté ?",
-   apport:"Observer une classe d'anglais : focales spécifiques. La place de l'anglais vs le français -- qui parle quelle langue, quand, pourquoi. Les compétences travaillées (CO, CE, PE, PO, interaction). Comment l'enseignant gère les erreurs. Différence entre décrire et interpréter.",
-   atelier:"Deux temps. D'abord (20 min) : retour sur l'atelier de didactisation de S1 -- chaque groupe reprend sa consigne et sa tâche, les confronte à ce qu'il a réellement vu en stage groupé. Est-ce que le tuteur a fait quelque chose de similaire ? De radicalement différent ? Pourquoi ? Ensuite (55 min) : visionnage d'un extrait vidéo de classe d'anglais (Néopass@ction). Chaque binôme observe avec une focale assignée : langue utilisée / compétences / consignes / gestion des erreurs. Croisement des relevés.",
-   numerique:"Pearltrees -- créer une collection collaborative de ressources sur l'observation de classe d'anglais. Chaque étudiant contribue un lien, une vidéo, une ressource utile. Base commune enrichie tout au long du semestre.",
-   carnet:"Entrée 1 : après le stage groupé -- une scène de classe décrite factuellement avec les focales anglais. Ce que j'avais vu, ce que j'aurais raté.",
-   livrable:"Grille d'observation spécifique anglais (6 focales)"},
+  {num:2,axe:1,date:"11 septembre",phase:"Avant le stage groupé",
+   title:"Apprendre à observer -- les 6 focales de la classe d'anglais",
+   terrain:"Pas encore de terrain. Point de départ : qu'est-ce qu'observer veut dire ? Chacun décrit en une phrase ce qu'il imagine regarder pendant le stage groupé. Collecte au tableau -- on voit déjà des biais, des angles morts, des a priori.",
+   apport:"Différence entre décrire et interpréter -- avec des exemples concrets. Les 6 focales de la classe d'anglais : enseignant dans l'espace / élèves / séance comme objet / interactions langagières / supports et numérique / espace et formes de travail. Zoom spécifique anglais : place de l'anglais vs français, gestion des erreurs, compétences CO/CE/PE/PO.",
+   atelier:"Didactiser une fiche lexicale School objects (niveau A1/A2, 6e). Ce document tel quel ne fait pas apprendre -- il expose du vocabulaire. Comment le transformer en situation d'apprentissage ? En groupes de 3 avec contraintes différentes : groupe A (6e, objectif production orale) / groupe B (5e, objectif interaction entre élèves) / groupe C (6e, phase de CO avant la production). Chaque groupe produit : objectif langagier opérationnel, consigne mot pour mot, tâche communicative finale, forme de travail justifiée. Mise en commun : même document, séances très différentes.",
+   numerique:"Pearltrees -- création de la collection collaborative de la promo. Chaque étudiant crée son compte, rejoint la collection commune, fait un premier dépôt. Organisation en dossiers : par niveau, par compétence, par type de document.",
+   carnet:"Entrée 0 complétée : pendant le stage groupé, observe comment ton tuteur utilise les documents en classe -- est-ce qu'il les didactise ou est-ce qu'il les expose ?",
+   livrable:"Tâche communicative School objects + collection Pearltrees lancée"},
 
-  // S3 -- AXE GÉRER
-  {num:3,axe:2,
-   title:"Gérer la classe d'anglais : posture, transitions et langue cible",
-   terrain:"Groupes de 4 : un moment de flottement ou de tension observé chez le tuteur. Le groupe cherche ce qui s'est passé sans juger. Focus particulier : est-ce que la langue (anglais/français) a joué un rôle dans ce moment ?",
-   apport:"Ce qui se joue avant même de parler : posture, placement, regard, voix. La gestion de la langue cible -- grand dilemme du débutant en anglais. Quand rester en anglais, quand basculer en français, comment gérer la transition. La classe comme espace physique à habiter.",
-   atelier:"Situations-problèmes sur cartes : un élève pose une question de grammaire en français / une consigne n'est pas comprise / un élève répond en français. Pour chaque situation : que fait-on, en quelle langue, pourquoi ? Construction collective d'une charte de la langue en classe.",
-   numerique:"Genially -- explorer un Genially interactif sur la gestion de classe, puis créer un mini-Genially (3 slides) sur 'ma charte de la langue en classe'. Format réutilisable et partageable avec le tuteur.",
-   carnet:"Entrée 3 : ma posture en classe -- ce que je perçois de moi-même quand j'interviens, ce que je veux travailler. La langue que j'utilise spontanément et pourquoi.",
+  {num:3,axe:1,date:"18 septembre",phase:"Avant le stage groupé",
+   title:"Se préparer au stage groupé -- observer, noter, comprendre",
+   terrain:"Pas encore de terrain. Trois semaines après S1 : qu'est-ce qui a changé dans leur représentation du métier ? Qu'est-ce qui les inquiète encore ? Tour de table rapide -- 2 min par personne.",
+   apport:"Comment utiliser la grille d'observation pendant le stage groupé : choisir une focale par séance, pas tout observer à la fois. Les gestes professionnels spécifiques à l'anglais : comment l'enseignant installe la langue cible, comment il gère le passage entre compétences. Ce qu'on ne sait pas encore voir -- et comment le noter sans l'interpréter.",
+   atelier:"Simulation d'observation -- visionnage d'un extrait vidéo de classe d'anglais (Néopass@ction ou équivalent). Chaque binôme observe avec une focale assignée. 10 min de visionnage, 10 min de notes individuelles, puis croisement des relevés en groupe : qu'est-ce qu'on a vu différemment selon la focale ? Qu'est-ce qu'on a tous raté ? Débriefing collectif : comment l'enseignant didactise-t-il le document dans cet extrait ?",
+   numerique:"Genially -- explorer un Genially interactif sur les gestes professionnels en classe d'anglais. Puis créer un mini-Genially personnel (3 slides) : 'Ce que je vais observer pendant le stage groupé' -- trois focales choisies, trois questions que je me pose. Format à partager avec le tuteur.",
+   carnet:"Entrée 0b : premiers jours en établissement -- à remplir pendant le stage groupé. Les acteurs rencontrés, premier échange avec le CPE, ce que je n'avais pas anticipé.",
+   livrable:"Grille d'observation personnalisée + mini-Genially de préparation au stage"},
+
+  // ══ STAGE GROUPÉ : 21 septembre -- 2 octobre ═══════════════
+
+  // ══ APRÈS LE STAGE GROUPÉ -- STAGE FILÉ (S4-S11) ═══════════
+  // Retour de terrain réel à chaque séance
+
+  {num:4,axe:2,date:"9 octobre",phase:"Après le stage groupé -- premier retour",
+   title:"Bilan du stage groupé et gérer la classe d'anglais",
+   terrain:"SÉANCE PIVOT -- premier vrai retour de terrain. En groupes de 4 : chacun raconte une scène de classe vue pendant le stage groupé avec les mots de sa focale. Le groupe identifie : ce qui était pareil pour tous, ce qui diverge selon les établissements. Mise en commun : qu'est-ce qu'on a tous vu ? Qu'est-ce qu'on a tous raté ? Retour sur les mini-Genially préparés en S3 -- est-ce qu'on a observé ce qu'on avait prévu ?",
+   apport:"Gérer la classe d'anglais : posture, placement, voix, transitions. Le grand dilemme du débutant : anglais ou français, quand et pourquoi ? Ce qui se joue avant même de parler -- la classe comme espace physique à habiter.",
+   atelier:"Situations-problèmes sur cartes : un élève pose une question de grammaire en français / une consigne n'est pas comprise par la moitié de la classe / un élève répond en français alors qu'on attendait de l'anglais / une transition s'éternise. Pour chaque situation : que fait-on, en quelle langue, pourquoi ? Construction collective d'une charte de la langue en classe. Lien direct avec ce qu'ils ont observé chez leur tuteur.",
+   numerique:"Genially -- finaliser la charte de la langue en classe commencée en atelier. Chaque étudiant produit sa version personnelle (3-4 slides). Partagée avec le tuteur avant la prochaine visite de stage.",
+   carnet:"Entrée 1 : après le stage groupé -- une scène décrite factuellement avec deux focales. Ce que j'avais prévu d'observer, ce que j'ai réellement vu. Ce qui m'a le plus surpris.",
    livrable:"Charte de la langue en classe (Genially)"},
 
-  // S4 -- AXE GÉRER
-  {num:4,axe:2,
+  {num:5,axe:2,date:"16 octobre",phase:"Stage filé",
    title:"Tâche communicative, formes de travail et hétérogénéité",
-   terrain:"Tour de table : quelles formes de travail ont-ils vues en stage ? Individuel, binômes, groupes, classe entière -- dans quel but ? La disposition de la salle favorisait-elle ces formes ? Collecte au tableau.",
-   apport:"Les formes sociales de travail et leur logique en anglais. Introduction à la tâche communicative comme unité centrale (approche actionnelle, CECRL). Différenciation : adapter la tâche au niveau, pas juste simplifier le texte. Disposition de la salle et organisation de l'espace.",
-   atelier:"En trinômes : à partir d'un document authentique simple fourni (image, titre d'article, extrait audio court), concevoir une tâche communicative -- niveau (A2/B1), compétence visée (CO/CE/PE/PO), consigne mot pour mot, forme de travail, production attendue. Comparaison entre groupes : même document, tâches très différentes.",
-   numerique:"La Digitale (Digipad) -- tableau collaboratif pour déposer et comparer les tâches communicatives construites en atelier. Chaque groupe voit la production des autres en temps réel. Vote sur la tâche la plus cohérente.",
+   terrain:"Retour de stage filé -- lundi et jeudi. En binôme : quelles formes de travail ont-ils vues cette semaine ? Individuel, binômes, groupes, classe entière -- dans quel but ? La disposition de la salle favorisait-elle ces formes ? Ont-ils vu une tâche communicative ? À quoi ça ressemblait ?",
+   apport:"Les formes sociales de travail et leur logique en anglais. La tâche communicative comme unité centrale (approche actionnelle, CECRL) -- ce que c'est, ce que ce n'est pas, comment la distinguer d'une activité. Différenciation : adapter la tâche au niveau, pas juste simplifier le texte.",
+   atelier:"En trinômes : à partir d'un document authentique simple (image, extrait audio court, titre d'article), concevoir une tâche communicative complète -- niveau (A2/B1), compétence visée (CO/CE/PE/PO), consigne mot pour mot, forme de travail, production attendue des élèves. Comparaison entre groupes : même document, tâches très différentes selon les choix.",
+   numerique:"La Digitale (Digipad) -- tableau collaboratif pour déposer et comparer les tâches communicatives construites. Chaque groupe voit la production des autres en temps réel. Vote sur la tâche la plus cohérente.",
    carnet:"Entrée 4 : espace et formes de travail dans ma classe de stage. La disposition favorise-t-elle la communication en anglais ? Qui a besoin de quoi ?",
    livrable:"Tâche communicative complète (niveau, compétence, consigne, forme, production)"},
 
-  // S5 -- AXE CONCEVOIR
-  {num:5,axe:3,
+  {num:6,axe:3,date:"23 octobre",phase:"Stage filé",
    title:"Lire le programme d'anglais et le CECRL",
-   terrain:"Tour rapide : ont-ils consulté le programme avant d'observer une séance ? Le tuteur s'y réfère-t-il explicitement ? Discussion sur les pratiques réelles.",
+   terrain:"Retour de stage filé. Tour rapide : ont-ils consulté le programme avant d'observer une séance ? Le tuteur s'y réfère-t-il explicitement ? Ont-ils vu le niveau CECRL mentionné quelque part dans la classe ?",
    apport:"Lire le programme d'anglais de façon opérationnelle -- compétences (CO, CE, PE, PO, POI), niveaux CECRL (A1 à B2), progression entre cycles. Comment le programme se traduit en objectif de séance. Ce qu'on peut ignorer sans risque.",
-   atelier:"En binôme : à partir d'une page du programme collège ou lycée et des descripteurs CECRL, identifier les compétences visées pour un niveau donné, relier à un type d'activité concret, repérer la progression entre deux niveaux. Puis imaginer deux activités différentes pour une même compétence -- une avec support écrit, une avec support oral.",
-   numerique:"Pearltrees -- enrichir la collection collaborative avec les ressources officielles : Éduscol anglais, CECRL en ligne, progressions par niveau, ressources académiques. Mutualisée pour toute la promo.",
-   carnet:"Entrée 5 : le programme de ma classe de stage -- ce que j'y comprends, le niveau CECRL visé, ce qui me résiste encore.",
+   atelier:"En binôme : à partir d'une page du programme collège ou lycée et des descripteurs CECRL, identifier les compétences visées pour le niveau de leur classe de stage, les relier à un type d'activité concret. Puis imaginer deux activités différentes pour une même compétence -- une avec support écrit, une avec support oral. Mise en commun : est-ce que ce que fait le tuteur correspond au programme ?",
+   numerique:"Pearltrees -- enrichir la collection avec les ressources officielles : Éduscol anglais, CECRL en ligne, progressions par niveau. Chaque étudiant ajoute au moins deux ressources fiables.",
+   carnet:"Entrée 5 : le programme de ma classe de stage -- le niveau CECRL visé, ce que j'y comprends, ce qui me résiste encore.",
    livrable:"Carte des compétences CECRL pour le niveau de stage"},
 
-  // S6 -- AXE CONCEVOIR
-  {num:6,axe:3,
+  {num:7,axe:3,date:"6 novembre",phase:"Stage filé",
    title:"Concevoir une séance d'anglais : la chaîne logique",
-   terrain:"Groupes de 4 : chacun décrit une séance observée chez le tuteur. Le groupe identifie la logique entre objectif, compétence visée, activités, trace écrite. Est-ce que la tâche finale était vraiment communicative ?",
+   terrain:"Retour de stage filé. Groupes de 4 : chacun décrit une séance observée chez son tuteur. Le groupe identifie la logique (ou son absence) entre objectif, compétence visée, activités et trace écrite. La tâche finale était-elle vraiment communicative ?",
    apport:"La chaîne objectif -> compétence -> activités -> tâche finale -> trace écrite. Les erreurs classiques en anglais : objectif disciplinaire confondu avec objectif langagier, grammaire plaquée sans contexte, activité de réception sans production, pas de tâche finale.",
-   atelier:"Rétro-ingénierie d'une fiche de préparation d'anglais imparfaite : objectif flou, activités déconnectées, grammaire sans contexte, pas de tâche finale, consigne en franglais. En trinômes : identifier les ruptures, reformuler l'objectif, reconstruire le déroulé, proposer une tâche finale cohérente.",
-   numerique:"Canva -- créer une fiche de préparation lisible et professionnelle à partir du travail de l'atelier. Template partageable avec le tuteur ou le formateur. Chacun repart avec sa fiche mise en forme.",
+   atelier:"Rétro-ingénierie d'une fiche de préparation d'anglais imparfaite : objectif flou, activités déconnectées, grammaire sans contexte, pas de tâche finale, consigne en franglais. En trinômes : identifier les ruptures, reformuler l'objectif langagier, reconstruire le déroulé, proposer une tâche finale cohérente.",
+   numerique:"Canva -- créer une fiche de préparation lisible et professionnelle à partir du travail de l'atelier. Template partageable avec le tuteur ou le formateur.",
    carnet:"Entrée 6 : analyser une séance observée -- chaîne logique reconstituée, objectif langagier identifié, ce que j'aurais fait différemment.",
    livrable:"Fiche de préparation reconstruite (Canva)"},
 
-  // S7 -- AXE CONCEVOIR
-  {num:7,axe:3,
+  {num:8,axe:3,date:"13 novembre",phase:"Stage filé",
    title:"La consigne en anglais : précision, langue et modalité",
-   terrain:"En binôme : une consigne donnée ou entendue chez le tuteur cette semaine. En quelle langue ? Les élèves l'ont-ils comprise ? Collecte anonyme sur tableau partagé.",
+   terrain:"Retour de stage filé. En binôme : une consigne donnée ou entendue chez le tuteur cette semaine. En quelle langue ? Les élèves l'ont-ils comprise du premier coup ? Comment le tuteur a-t-il vérifié la compréhension ?",
    apport:"Ce qui fait une bonne consigne en anglais : clarté, modalité, vérification de compréhension. La question de la langue de la consigne -- en anglais ou en français selon le niveau, l'activité, l'enjeu. Consignes de réception vs consignes de production. Consignes multimodales.",
    atelier:"Clinique de la consigne en anglais -- corpus de 8 consignes réelles tirées de manuels : 'Read and answer', 'Give your opinion', 'Listen and tick', 'Write a short paragraph', 'Look and say', 'Find the grammar rule', 'Prepare a presentation', 'React to your partner'. Classer, critiquer, réécrire les trois plus faibles. Débat : en anglais ou en français ?",
-   numerique:"Wordwall -- concevoir une activité interactive autour d'une notion lexicale ou grammaticale observée en stage. Côté élève d'abord, puis côté enseignant -- qu'est-ce que ça évalue vraiment ? Partage dans la collection Pearltrees.",
+   numerique:"Wordwall -- concevoir une activité interactive autour d'une notion lexicale ou grammaticale observée en stage. Côté élève d'abord, puis côté enseignant.",
    carnet:"Entrée 7 : une consigne avant/après -- transcrite, analysée, réécrite.",
    livrable:"Banque de consignes améliorées + activité Wordwall"},
 
-  // S8 -- AXE ÉVALUER
-  {num:8,axe:4,
+  {num:9,axe:4,date:"20 novembre",phase:"Stage filé",
    title:"Évaluer autrement en anglais : feedback et auto-évaluation",
-   terrain:"En binôme : comment le tuteur évalue-t-il ses élèves en anglais ? Note, feedback oral, grille, auto-évaluation ? Mise en commun : diversité ou uniformité des pratiques observées ?",
-   apport:"Évaluation formative vs sommative en anglais. Ce que la recherche dit du feedback efficace sur la production langagière -- corriger tout ou cibler ? Les descripteurs CECRL comme outil de feedback. Auto-évaluation et co-évaluation : comment les mettre en place en classe d'anglais.",
+   terrain:"Retour de stage filé. En binôme : comment le tuteur évalue-t-il ses élèves en anglais ? Note, feedback oral, grille, auto-évaluation ? Mise en commun : diversité ou uniformité des pratiques observées ?",
+   apport:"Évaluation formative vs sommative en anglais. Ce que la recherche dit du feedback efficace sur la production langagière. Les descripteurs CECRL comme outil de feedback. Auto-évaluation et co-évaluation en classe d'anglais.",
    atelier:"Une production écrite fictive d'élève de 3e (A2/B1) distribuée -- 8-10 lignes avec erreurs variées (grammaire, lexique, syntaxe, registre). En groupes : quelles erreurs corriger en priorité, rédiger un feedback écrit actionnable en 3-4 lignes, construire 3 critères de réussite simples que l'élève peut s'appliquer lui-même.",
-   numerique:"Kahoot -- construire un quiz de vérification de compréhension en anglais sur une notion vue en stage. Côté élève puis côté enseignant. Qu'est-ce que ça évalue vraiment -- et ce que ça ne peut pas évaluer ?",
+   numerique:"Kahoot -- construire un quiz de vérification de compréhension en anglais sur une notion vue en stage. Côté élève puis côté enseignant.",
    carnet:"Entrée 8 : comment mon tuteur évalue ses élèves -- une pratique décrite, ce que je retiens, ce que je veux essayer.",
    livrable:"Grille de feedback + quiz Kahoot"},
 
-  // S9 -- AXE ÉVALUER
-  {num:9,axe:4,
+  {num:10,axe:4,date:"27 novembre",phase:"Stage filé",
    title:"Le numérique en classe d'anglais : vraie plus-value ?",
-   terrain:"Groupes de 4 : recenser tous les usages numériques observés en cours d'anglais depuis septembre. Classement spontané : utile / gadget / ambigu. Qu'est-ce que le numérique change vraiment dans la classe d'anglais ?",
-   apport:"Cadre SAMR appliqué à l'anglais -- substitution (lire un texte sur écran), augmentation (texte avec audio intégré), modification (tâche collaborative en ligne), redéfinition (production multimodale authentique). Ressources numériques spécifiques anglais : BBC Learning English, TED-Ed, TV5Monde, podcasts.",
-   atelier:"Un document authentique numérique distribué -- extrait de série (sous-titres fournis), chanson avec paroles, publicité vidéo, article en ligne. En trinômes : quel niveau, quelle compétence, quelle tâche ? Est-ce que le numérique change quelque chose ici (SAMR) ? Quels risques spécifiques ?",
-   numerique:"Genially -- créer une présentation interactive autour du document authentique de l'atelier. Consigne, tâche, trace écrite intégrées dans le Genially. Format directement utilisable en classe.",
+   terrain:"Retour de stage filé. Groupes de 4 : recenser tous les usages numériques observés en cours d'anglais depuis septembre. Classement spontané : utile / gadget / ambigu. Qu'est-ce que le numérique change vraiment dans la classe d'anglais ?",
+   apport:"Cadre SAMR appliqué à l'anglais -- substitution, augmentation, modification, redéfinition. Ressources numériques spécifiques anglais : BBC Learning English, TED-Ed, podcasts. L'IA en classe d'anglais : potentiels et limites.",
+   atelier:"Un document authentique numérique distribué -- extrait de série (sous-titres fournis), chanson avec paroles, publicité vidéo. En trinômes : quel niveau, quelle compétence, quelle tâche ? Est-ce que le numérique change quelque chose ici (SAMR) ? Quels risques spécifiques ?",
+   numerique:"Genially -- créer une présentation interactive autour du document authentique de l'atelier. Consigne, tâche, trace écrite intégrées. Format directement utilisable en classe.",
    carnet:"Entrée 9 : usages numériques en stage -- tableau SAMR des usages observés en anglais. Mon rapport au numérique en tant qu'enseignant débutant.",
    livrable:"Séance interactive complète (Genially)"},
 
-  // S10 -- AXE RÉFLÉCHIR
-  {num:10,axe:5,
+  {num:11,axe:5,date:"4 décembre",phase:"Stage filé",
    title:"Analyser sa pratique en anglais -- le modèle ALACT",
-   terrain:"Écriture individuelle 5 min : un moment précis en stage où j'ai eu un rôle actif -- une consigne donnée, un basculement en français involontaire, une interaction avec un élève qui n'a pas répondu. Partage en binôme : l'autre écoute et pose des questions.",
-   apport:"Le modèle ALACT appliqué à la pratique en anglais. Focus sur l'étape A2 : qu'est-ce qui a vraiment causé la difficulté -- la langue, la consigne, la gestion de classe, la tâche ? Et sur l'étape C : des alternatives concrètes et réalistes en anglais.",
-   atelier:"Application des cinq étapes ALACT à un moment vécu en stage : description factuelle, ressenti pendant, aspect essentiel identifié, deux alternatives concrètes en anglais, ce qu'on va tester. Partage en binôme -- rôles inversés ensuite.",
-   numerique:"Assistant IA -- simuler un échange avec un élève fictif en anglais. L'étudiant joue l'enseignant, l'IA joue l'élève à un niveau donné (A2, B1). Analyse ensuite avec ALACT : qu'est-ce que j'ai bien géré, qu'est-ce que j'aurais fait autrement ?",
+   terrain:"Retour de stage filé. Écriture individuelle 5 min : un moment précis en stage où j'ai eu un rôle actif -- une consigne donnée, un basculement en français involontaire, une interaction avec un élève qui n'a pas répondu. Partage en binôme : l'autre écoute et pose des questions sans donner de réponses.",
+   apport:"Le modèle ALACT appliqué à la pratique en anglais. Focus sur A2 : qu'est-ce qui a vraiment causé la difficulté -- la langue, la consigne, la gestion de classe, la tâche ? Et sur C : des alternatives concrètes et réalistes.",
+   atelier:"Application des cinq étapes ALACT à un moment vécu en stage en anglais. Description factuelle, ressenti pendant, aspect essentiel identifié, deux alternatives concrètes, ce qu'on va tester. Partage en binôme -- rôles inversés ensuite.",
+   numerique:"Assistant IA -- simuler un échange avec un élève fictif en anglais. L'étudiant joue l'enseignant, l'IA joue l'élève à un niveau donné (A2, B1). Analyse ensuite avec ALACT.",
    carnet:"Entrée 10 : analyse ALACT complète -- les cinq étapes appliquées à une situation personnelle en anglais.",
    livrable:"Analyse ALACT complète"},
 
-  // S11 -- AXE RÉFLÉCHIR
-  {num:11,axe:5,
+  {num:12,axe:5,date:"11 décembre",phase:"Stage filé",
    title:"Bilan, projection et entraînement à l'examen",
-   terrain:"Groupes de 4 : trois apprentissages concrets du semestre sur l'enseignement de l'anglais. Partage en grand groupe : ce qui revient, ce qui diverge, ce qui reste à travailler.",
-   apport:"Synthèse des cinq axes appliqués à l'anglais. Ce qui reste à explorer au S2 -- prise en responsabilité progressive, conception de séquences, préparation au CAPES. Format et critères de l'examen sur table.",
-   atelier:"Entraînement à l'examen -- un set de 4-5 documents authentiques variés autour d'une notion. En groupes de 3 : sélectionner et justifier les documents, construire le squelette d'une séance d'1h (objectif langagier, déroulé, consigne centrale, tâche finale), identifier le risque principal. Mise en commun : chaque groupe présente, les autres questionnent la cohérence.",
-   numerique:"La Digitale (Bingo / Roue) pour le bilan collectif ludique + dépôt final sur Pearltrees de la boîte à outils complète de la promo. Chacun repart avec l'ensemble des ressources produites pendant le semestre.",
+   terrain:"Retour de stage filé. Groupes de 4 : trois apprentissages concrets du semestre sur l'enseignement de l'anglais. Partage en grand groupe : ce qui revient, ce qui diverge, ce qui reste à travailler.",
+   apport:"Synthèse des cinq axes appliqués à l'anglais. Ce qui reste à explorer au S2. Format et critères de l'examen sur table.",
+   atelier:"Entraînement à l'examen -- un set de 4-5 documents authentiques autour d'une notion. En groupes de 3 : analyser une vignette de pratique / sélectionner et justifier les documents / construire le squelette d'une séance d'1h. Mise en commun : chaque groupe présente, les autres questionnent la cohérence.",
+   numerique:"La Digitale (Bingo / Roue) pour le bilan collectif ludique + dépôt final sur Pearltrees de la boîte à outils complète de la promo.",
    carnet:"Entrée finale : bilan de semestre -- ce que je savais / sais / veux apprendre. La séance que je n'oublierai pas.",
    livrable:"Carnet de stage finalisé + boîte à outils collective"},
 
-  // S12 -- ÉVALUATION
-  {num:12,axe:0,
+  {num:13,axe:0,date:"11 décembre",phase:"Évaluation",
    title:"Examen sur table -- Analyse de situation et didactisation",
-   terrain:"Séance d'évaluation individuelle -- 2h30. Distribution du dossier : une vignette de pratique (situation de classe fictive) + un set de 5-6 documents authentiques autour d'une notion communiquée le jour J + une fiche de contexte (niveau, profil de classe, contrainte). Rappel oral des consignes et des critères (5 min). Travail individuel en silence.",
-   apport:"Pas d'apport -- séance d'évaluation. Le dossier contient tout le nécessaire.",
-   atelier:"Partie 1 -- Analyser une situation (30 min) : une vignette de 10-12 lignes décrit un stagiaire fictif qui mène une séance d'anglais. Trois questions : identifier deux problèmes dans la consigne et proposer une reformulation / repérer la rupture dans la chaîne logique de la séance / proposer une alternative concrète (étape C du modèle ALACT). Partie 2 -- Sélectionner et justifier (20 min) : choisir les documents du set à utiliser, justifier chaque choix, expliquer l'ordre d'introduction. Partie 3 -- Concevoir la séance (55 min) : objectif langagier opérationnel, déroulé en 3 à 5 phases avec minutage, au moins une consigne rédigée mot pour mot, formes de travail justifiées, trace écrite ou production attendue, moment d'évaluation formative. Partie 4 -- Regard critique (15 min) : identifier le risque principal de la séance conçue et ce qu'on modifierait avec une contrainte supplémentaire.",
+   terrain:"Séance d'évaluation individuelle -- 2h30. Distribution du dossier : vignette de pratique (situation de classe fictive en anglais) + set de 5-6 documents authentiques autour d'une notion communiquée le jour J + fiche de contexte (niveau, profil de classe, contrainte). Rappel oral des consignes et des critères (5 min). Travail individuel en silence.",
+   apport:"Pas d'apport -- séance d'évaluation.",
+   atelier:"Partie 1 -- Analyser une situation (30 min) : vignette de 10-12 lignes, trois questions : identifier deux problèmes dans la consigne et proposer une reformulation / repérer la rupture dans la chaîne logique / proposer une alternative concrète (étape C du modèle ALACT). Partie 2 -- Sélectionner et justifier (20 min) : choisir les documents du set, justifier chaque choix, expliquer l'ordre. Partie 3 -- Concevoir la séance (55 min) : objectif langagier opérationnel, déroulé en 3 à 5 phases minuté, consigne mot pour mot, formes de travail justifiées, trace écrite, évaluation formative. Partie 4 -- Regard critique (15 min) : risque principal de la séance conçue, ce qu'on modifierait avec une contrainte supplémentaire.",
    numerique:"Aucun -- épreuve sans document ni outil numérique.",
    carnet:"Le carnet de stage est rendu ce jour -- finalisé, relu, mis en forme.",
    livrable:"Copie d'examen (4 parties) + carnet de stage rendu"},
@@ -730,12 +739,17 @@ function buildSessions(){
     const card=document.createElement('div');
     card.className='session-card';card.dataset.axe=s.axe;
     card.onclick=()=>openModal(s.num);
+    const phaseClass = s.phase && s.phase.includes('Avant') ? 'phase-avant' : s.phase && s.phase.includes('valuation') ? 'phase-exam' : 'phase-apres';
     card.innerHTML=`
       <div class="card-top">
         <div class="session-num">${String(s.num).padStart(2,'0')}</div>
         <div class="card-meta">
           <h3>${s.title}</h3>
-          <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> ${axe.label}</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">
+            <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> ${axe.label}</span>
+            ${s.date ? `<span style="font-size:11px;color:var(--soft);font-weight:500;">${s.date}</span>` : ''}
+            ${s.phase ? `<span class="${phaseClass}">${s.phase}</span>` : ''}
+          </div>
         </div>
       </div>
       <div class="card-body">
@@ -765,7 +779,11 @@ function openModal(num){
       <div class="modal-num">${String(s.num).padStart(2,'0')}</div>
       <div class="modal-header-info">
         <h2>${s.title}</h2>
-        <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> Axe ${s.axe} -- ${axe.label}</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <span class="axe-badge badge-${s.axe}"><i class="ti ${axe.icon}" style="font-size:10px;" aria-hidden="true"></i> ${axe.label}</span>
+          ${s.date ? `<span style="font-size:12px;color:var(--soft);font-weight:500;padding-top:2px;">${s.date}</span>` : ''}
+          ${s.phase ? `<span style="font-size:11px;color:var(--soft);padding-top:2px;">${s.phase}</span>` : ''}
+        </div>
       </div>
       <button class="close-btn" onclick="closeModalDirect()" aria-label="Fermer"><i class="ti ti-x" aria-hidden="true"></i></button>
     </div>
